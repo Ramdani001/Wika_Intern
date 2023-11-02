@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH . "third_party/dompdf/autoload.php";
+
+use Dompdf\Dompdf;
 
 class Administrator extends CI_Controller {
     public function __construct(){
@@ -369,6 +372,20 @@ class Administrator extends CI_Controller {
             'data' => $query,
         ];
         $this->load->view('templates/pages/DetailSurat', $data);
+
+        
+        $paper_size = "A4";
+        $orientation = "potrait";
+        $html = $this->output->get_output();
+
+        $pdf = new Dompdf();
+        $pdf->set_option('isRemoteEnabled', TRUE);
+        $pdf->setPaper($paper_size, $orientation);
+        $pdf->loadHtml($html);
+        $pdf->render();
+
+        $pdf->stream('Surat_Balasan.pdf', ['Attchment' => 0]);
+
     }
 
 }

@@ -15,25 +15,28 @@
     width: 50%;
     padding: 10px;">
         <img src="<?= base_url() ?>assets/img/logoSuratPenerimaan.png" alt="Logo"
-        style=" display: block; margin-left: auto; margin-right: auto; width: 250px; height: 90px;">
+        style=" display: block; margin-left: 50px; width: 250px; height: 90px;">
         
     </div>
-        <div style="width: 85%;">
+    <div style="width: 85%;">
             
         <?php foreach ($data as $surat) { ?>
                 
                 <div class="" style="display: flex; flex: 1; margin-top: 20px;">
-                    <div style="flex-grow: 1; margin-left: 100px;">
-                        <span style="padding-bottom: 20px;">
-                            Nomor : <?= $surat->nomorSuratBalasan ?>
-                        </span> 
+                    <div style=" margin-left: 100px;">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td>
+                                Nomor : <?= $surat->nomorSuratBalasan ?>
+                                </td>
+                                <td style="text-align: right;">
+                                Majalengka, <?= $surat->tglDibuat ?>
+                                </td>
+                            </tr>
+                        </table>
+                        
                     </div>
-
-                    <span style="flex-grow: 1; text-align: end;">
-                        Majalengka, <?= $surat->tglDibuat ?>
-                    </span>
-                </div>
-            </div>   
+                </div>   
 
             <br>
             <div style="margin-left: 100px; line-height: 1.5;">
@@ -51,14 +54,12 @@
                 <div style="margin-top: 6px; margin-left: 45px;">
                     Perihal : <b> Izin Prakter Kerja Lapangan (PKL) </b>
                 </div>
-                <p style="margin-top: 6px; width: 84%; text-align: justify; line-height: 1.5;">
+                <p style="margin-top: 10px; text-align: justify; line-height: 1.5;">
                     Dengan Hormat, <br>
-                    Merujuk Surat Permohonan <b> <?= $surat->nomorSuratMou ?> </b> tanggal <?= $surat->tglSuratMou ?>, terkait
-                    Permohonan Praktik Kerja Lapangan (PKL) di PT Wijaya Karya Industri & Kontruksi Pabrikasi Baja
-                    Majalengka terhadap <?= $surat->statusPemohon ?> di bawah ini : <br>
+                    Merujuk Surat Permohonan <b><?= $surat->nomorSuratMou ?></b> tanggal <?= $surat->tglSuratMou ?>, terkait Permohonan Praktik Kerja Lapangan (PKL) di PT Wijaya Karya Industri & Kontruksi Pabrikasi Baja Majalengka terhadap <?= $surat->statusPemohon ?> di bawah ini : <br>
                     
                 </p>
-                <table style="width: 84%; border-collapse: collapse; text-align: center;" border="1">
+                <table style="border-collapse: collapse; text-align: center; width: 100%;" border="1">
                     <thead>
                         <tr>
                             <th style="width: 10%;">NO</th>
@@ -172,13 +173,13 @@
                     </tbody>
                 </table>
 
-                <p style="margin-top: 10px; width: 84%; text-align: justify; line-height: 1.5;">
+                <p style="margin-top: 10px;  text-align: justify; line-height: 1.5;">
                     Bersama dengan ini kami sampaikan bahwa permohonan tersebut <?= $surat->statusSurat ?> untuk 
                     melaksanakan Praktik Kerja Lapangan di Pabrikasi Baja Majalengka, PT Wijaya Karya Industri &
-                    Kontruksi. Selanjutnya Praktik Kerja Lapangan dilaksanakan dengan ketentuan sebagi berikut:
+                    Kontruksi. Selanjutnya Praktik Kerja Lapangan dilaksanakan dengan ketentuan sebagai berikut:
                 </p>
 
-                <div style="width: 84%; margin-top: 10px;">
+                <div style=" margin-top: 10px;">
                     <table>
                         <tr>
                             <td>Waktu Pelaksanaan</td>
@@ -198,11 +199,11 @@
                     </table>
                 </div>
                 
-                <p style="margin-top: 10px; width: 84%; text-align: justify; line-height: 1.5;">
+                <p style="margin-top: 10px;  text-align: justify; line-height: 1.5;">
                     Mohon melakukan konfirmasi maksimal H-3 sebelum waktu pelaksanaan pada kontak dibawah ini :
                 </p>
 
-                <div style="width: 84%; margin-top: 10px;">
+                <div style=" margin-top: 10px;">
                     <table>
                         <tr>
                             <td>Personalia</td>
@@ -217,12 +218,12 @@
                     </table>
                 </div>
 
-                <p style="margin-top: 10px; width: 84%; text-align: justify; line-height: 1.5;">
+                <p style="margin-top: 10px;  text-align: justify; line-height: 1.5;">
                     Demikian surat ini disampaikan, atas perhatian dan kerjasamanya kami ucapkan terima kasih.
                 </p>
 
                 <!-- TTD -->
-                <div style="width: 84%; margin-top: 20px;">
+                <div style=" margin-top: 20px;">
                     <table style="margin-left: auto; line-height: 1.3;">
                         <tr>
                             <td>Hormat Kami,</td>
@@ -262,17 +263,5 @@
         <?php } ?>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {            
-            var style = document.createElement("style");
-            style.type = "text/css";
-            style.innerHTML = "@page { size: A4; }";
-            document.head.appendChild(style);
-
-            window.print();
-        });
-
-    </script>
-
 </body>
-</html>
+</html> 	
