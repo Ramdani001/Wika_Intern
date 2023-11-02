@@ -424,7 +424,7 @@
             console.log(value);
 
             $.ajax({ 
-                url: 'View/' + value, 
+                url: 'View/' + value,
                 method: 'POST',
                 success: function(response) {        
                     // console.log(response);

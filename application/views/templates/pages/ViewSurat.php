@@ -19,7 +19,7 @@
 `
     <!-- Modal Detail -->
     <div class="modal fade" id="modalViewSurat" tabindex="-1" aria-labelledby="modalDetailLabel" aria-hidden="true">
-        <div class="modal-dialog large">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="modalDetailLabel">Surat Penerimaan</h1>
@@ -33,7 +33,7 @@
                             margin-left: auto;
                             margin-right: auto;
                             width: 30%;
-                            height: 15%;
+                            height: 17%;
                             "
                             >
                         </div>
@@ -41,29 +41,29 @@
                         <div style="font-size: 10.5px;">
                             <table class="mb-2">
                                 <tr>
-                                    <td>
-                                    Nomor :  SE.01.01/WIK.C.MJK.KP.00030/2023  <!-- Nomor Surat Penerimaan -->
-                                    </td>
-                                    <td class="" style="padding-left: 120px;">
-                                    Majalengka,  17 Oktober 2023 <!-- Tanggal Dibuat -->
+                                    <td class="d-flex">
+                                    Nomor : <span id="nomorSuratBalasan"> </span>  <!-- Nomor Surat Penerimaan -->
+                                    </td class="d-flex">
+                                    <td class="" style="padding-left: 113px;">
+                                    Majalengka, <span id="tglSuratBalasan"> </span> <!-- Tanggal Dibuat -->
                                     </td>
                                 </tr>
                             </table>
 
                             <div class="text-justify">
                                 Kepada Yth. <br>
-                                Rektor Institut Teknologi Petroleum Balongan <br>
+                                <span id="asalSekolah" ></span> <br>
                                 Di Tempat
                                 <br>
                                     <span class="ml-4">Perihal : <b> Izin Praktik Kerja Lapangan (PKL) </b></span>
                                 <br>
                                 Dengan Hormat, <br>
-                                Merujuk Surat Permohonan Nomor <b>718/ITPB/FS/KP/X/2023</b> tanggal <b>16 Oktober 2023</b>, terkait
+                                Merujuk Surat Permohonan Nomor <b id="nomorSuratMou">  </b> tanggal <b id="tglSuratMou">16 Oktober 2023</b>, terkait
                                 Permohonan Praktik Kerja Lapangan (PKL) di PT Wijaya Karya Industri & Konstruksi Pabrikasi Baja
-                                Majalengka terhadap <b>Mahasiswa</b> di bawah ini :
+                                Majalengka terhadap <b id="statusPemohon">Mahasiswa</b> di bawah ini :
                             </div>
                             <br>
-                            <table style="border-collapse: collapse; text-align: center; width: 100%;" >
+                            <table  style="border-collapse: collapse; text-align: center; width: 100%;" >
                             <thead>
                                 <tr class="border">
                                     <th class="border" style="width: 10%;">NO</th>
@@ -73,18 +73,52 @@
                                 </tr>    
                             </thead>
                             <tbody>
-                                <tr class="border">
+                                <!-- Pemohon 1 -->
+                                <tr class="border" id="pemohon1">
                                     <td class="border"> 1 </td>
-                                    <td class="border"> Rizkan Ramdani </td>
-                                    <td class="border"> 2043014 </td>
-                                    <td class="border"> Teknik Informatika </td>
+                                    <td class="border text-start" id="namaPemohon1"></td>
+                                    <td class="border" id="nim1"></td>
+                                    <td class="border" id="jurusan1"></td>
                                 </tr>
+                                <!-- Pemohon 1 -->
+                                <!-- Pemohon 2 -->
+                                <tr class="border d-none" id="pemohon2">
+                                    <td class="border"> 2 </td>
+                                    <td class="border text-start" id="namaPemohon2"></td>
+                                    <td class="border" id="nim2"></td>
+                                    <td class="border" id="jurusan2"></td>
+                                </tr>
+                                <!-- Pemohon 2 -->
+                                <!-- Pemohon 3 -->
+                                <tr class="border d-none" id="pemohon3">
+                                    <td class="border"> 3 </td>
+                                    <td class="border text-start" id="namaPemohon3"></td>
+                                    <td class="border" id="nim3"></td>
+                                    <td class="border" id="jurusan3"></td>
+                                </tr>
+                                <!-- Pemohon 3 -->
+                                <!-- Pemohon 4 -->
+                                <tr class="border d-none" id="pemohon4">
+                                    <td class="border"> 4 </td>
+                                    <td class="border text-start" id="namaPemohon4"></td>
+                                    <td class="border" id="nim4"></td>
+                                    <td class="border" id="jurusan4"></td>
+                                </tr>
+                                <!-- Pemohon 4 -->
+                                <!-- Pemohon 5 -->
+                                <tr class="border d-none" id="pemohon5">
+                                    <td class="border"> 5 </td>
+                                    <td class="border text-start" id="namaPemohon5"></td>
+                                    <td class="border" id="nim5"></td>
+                                    <td class="border" id="jurusan5"></td>
+                                </tr>
+                                <!-- Pemohon 5 -->
                             </tbody>
                         </table>
                         <br>
 
                         <p class="text-justify">
-                        Bersama dengan ini kami sampaikan bahwa permohonan tersebut <b>Telah / Belum Bisa Kami Terima</b>
+                        Bersama dengan ini kami sampaikan bahwa permohonan tersebut <b id="statusSurat" ></b>
                         untuk melaksanakan Praktik Kerja Lapangan di Pabrikasi Baja Majalengka, PT Wijaya Karya Industri
                         & Konstruksi. Selanjutnya Praktik Kerja Lapangan dilaksanakan dengan ketentuan sebagai berikut : 
 
@@ -93,17 +127,17 @@
                             <tr>
                                 <td>Waktu Pelaksanaan</td>
                                 <td> : </td>
-                                <td class="fw-semibold">23 Oktober s.d 23 November 2023</td>
+                                <td class="fw-semibold"> <span id="tglMulai"></span> s.d <span id="tglAkhir"></span></td>
                             </tr>
                             <tr>
                                 <td>Penempatan Unit Kerja</td>
                                 <td> : </td>
-                                <td class="fw-semibold">Safety, Health and Environment </td>
+                                <td class="fw-semibold" id="divisi">  </td>
                             </tr>
                             <tr>
                                 <td>Pembimbing</td>
                                 <td> : </td>
-                                <td class="fw-semibold">Bapak Joko Prasetyo </td>
+                                <td class="fw-semibold" id="namaPembimbing"></td>
                             </tr>
                         </table>
                         <p class="text-justify mt-2">
@@ -134,10 +168,10 @@
                                     PT. Wijaya Karya Industri & Konstruksi <br>
                                 </span>
                                 <div class="mt-2 mb-2" style="margin-right: 100px;">
-                                    <img src="<?= base_url(); ?>assets/img/QrCode/Personalia.png" alt="" width="80">
+                                    <img id="ttd_digital" src="" alt="" width="80">
                                 </div>
                                 <span class="" style="margin-right: 42px;">
-                                    <span style="margin-right: 118px;">
+                                    <span class="text-decoration-underline fw-bold" style="margin-right: 118px;">
                                         Titan Rifesha
                                     </span>
                                     <br>
@@ -152,6 +186,20 @@
         </div>
     </div>
     <!-- Modal Detail -->
+
+    <!-- Modal Surat Edit -->
+    <div class="modal fade" id="modalEditSurat" tabindex="-1" aria-labelledby="modalDetailLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalDetailLabel">Surat Penerimaan</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Modal Surat Edit -->
 
  <script>
         $(document).ready(function() {
@@ -252,18 +300,135 @@
 
             form.submit();
         }else if(status == 2){
-            console.log('Lihat Id Surat = ', id);
+            
+            function formatDate(inputDate) {
+                const months = [
+                    'Januari', 'Februari', 'Maret', 'April',
+                    'Mei', 'Juni', 'Juli', 'Agustus',
+                    'September', 'Oktober', 'November', 'Desember'
+                ];
+
+                const dateParts = inputDate.split('-');
+                const year = dateParts[0];
+                const month = months[parseInt(dateParts[1]) - 1];
+                const day = dateParts[2];
+
+                return day + ' ' + month + ' ' + year;
+            }
+
             var dataToSend = { idSurat: id };
-            $.ajax({ 
+            $.ajax({  
                 url: 'Administrator/ViewDataSurat',
-                data: dataToSend,
+                data: dataToSend, 
                 method: 'POST',
-                success: function(response) {        
-
+                success: function(response) {
                     $('#modalViewSurat').modal('show');
+                    var jumlahPemohon = response.getSurat.jumlahPemohon;
 
-                    // console.log(response);
-                    console.log(response);
+                    $('#nomorSuratBalasan').text(response.getSurat.nomorSuratBalasan);
+                    $('#tglSuratBalasan').text(formatDate(response.getSurat.tglDibuat));
+                    $('#asalSekolah').text(response.getSurat.asalSekolahPemohon);
+                    $('#nomorSuratMou').text(response.getSurat.nomorSuratMou);
+                    $('#tglSuratMou').text(formatDate(response.getSurat.tglSuratMou));
+                    $('#statusPemohon').text(response.getSurat.statusPemohon);
+
+                    // Kondisi Jumlah Pemohon
+                    if(jumlahPemohon == 1){
+                        $('#namaPemohon1').text(response.getSurat.namaPemohon1);
+                        $('#nim1').text(response.getSurat.nim1);
+                        $('#jurusan1').text(response.getSurat.jurusan1);
+
+                        $('#pemohon2').addClass('d-none');
+                        $('#pemohon3').addClass('d-none');
+                        $('#pemohon4').addClass('d-none');
+                        $('#pemohon5').addClass('d-none');
+                    }else if(jumlahPemohon == 2){
+                        $('#namaPemohon1').text(response.getSurat.namaPemohon1);
+                        $('#nim1').text(response.getSurat.nim1);
+                        $('#jurusan1').text(response.getSurat.jurusan1);
+
+                        $('#namaPemohon2').text(response.getSurat.namaPemohon2);
+                        $('#nim2').text(response.getSurat.nim2);
+                        $('#jurusan2').text(response.getSurat.jurusan2);
+
+                        $('#pemohon2').removeClass('d-none');
+                        $('#pemohon3').addClass('d-none');
+                        $('#pemohon4').addClass('d-none');
+                        $('#pemohon5').addClass('d-none');
+                    }else if(jumlahPemohon == 3){
+                        $('#namaPemohon1').text(response.getSurat.namaPemohon1);
+                        $('#nim1').text(response.getSurat.nim1);
+                        $('#jurusan1').text(response.getSurat.jurusan1);
+
+                        $('#namaPemohon2').text(response.getSurat.namaPemohon2);
+                        $('#nim2').text(response.getSurat.nim2);
+                        $('#jurusan2').text(response.getSurat.jurusan2);
+
+                        $('#namaPemohon3').text(response.getSurat.namaPemohon3);
+                        $('#nim3').text(response.getSurat.nim3);
+                        $('#jurusan3').text(response.getSurat.jurusan3);
+
+                        $('#pemohon2').removeClass('d-none');
+                        $('#pemohon3').removeClass('d-none');
+                        $('#pemohon4').addClass('d-none');
+                        $('#pemohon5').addClass('d-none');
+                    }else if(jumlahPemohon == 4){
+                        $('#namaPemohon1').text(response.getSurat.namaPemohon1);
+                        $('#nim1').text(response.getSurat.nim1);
+                        $('#jurusan1').text(response.getSurat.jurusan1);
+
+                        $('#namaPemohon2').text(response.getSurat.namaPemohon2);
+                        $('#nim2').text(response.getSurat.nim2);
+                        $('#jurusan2').text(response.getSurat.jurusan2);
+
+                        $('#namaPemohon3').text(response.getSurat.namaPemohon3);
+                        $('#nim3').text(response.getSurat.nim3);
+                        $('#jurusan3').text(response.getSurat.jurusan3);
+
+                        $('#namaPemohon4').text(response.getSurat.namaPemohon4);
+                        $('#nim4').text(response.getSurat.nim4);
+                        $('#jurusan4').text(response.getSurat.jurusan4);
+
+                        $('#pemohon2').removeClass('d-none');
+                        $('#pemohon3').removeClass('d-none');
+                        $('#pemohon4').removeClass('d-none');
+                        $('#pemohon5').addClass('d-none');
+                    }else if(jumlahPemohon == 5){
+                        $('#namaPemohon1').text(response.getSurat.namaPemohon1);
+                        $('#nim1').text(response.getSurat.nim1);
+                        $('#jurusan1').text(response.getSurat.jurusan1);
+
+                        $('#namaPemohon2').text(response.getSurat.namaPemohon2);
+                        $('#nim2').text(response.getSurat.nim2);
+                        $('#jurusan2').text(response.getSurat.jurusan2);
+
+                        $('#namaPemohon3').text(response.getSurat.namaPemohon3);
+                        $('#nim3').text(response.getSurat.nim3);
+                        $('#jurusan3').text(response.getSurat.jurusan3);
+
+                        $('#namaPemohon4').text(response.getSurat.namaPemohon4);
+                        $('#nim4').text(response.getSurat.nim4);
+                        $('#jurusan4').text(response.getSurat.jurusan4);
+
+                        $('#namaPemohon5').text(response.getSurat.namaPemohon5);
+                        $('#nim5').text(response.getSurat.nim5);
+                        $('#jurusan5').text(response.getSurat.jurusan5);
+
+                        $('#pemohon2').removeClass('d-none');
+                        $('#pemohon3').removeClass('d-none');
+                        $('#pemohon4').removeClass('d-none');
+                        $('#pemohon5').removeClass('d-none');
+                    }
+                    // Kondisi Jumlah Pemohon
+
+                    $('#tglMulai').text(formatDate(response.getSurat.tglMulai));
+                    $('#tglAkhir').text(formatDate(response.getSurat.tglAkhir));
+                    $('#divisi').text(response.getSurat.namaDivisi);
+                    $('#namaPembimbing').text(response.getSurat.namaPembimbing);
+                    $('#ttd_digital').attr('src', '<?= base_url(); ?>assets/img/QrCode/' + response.getSurat.ttd_digital);
+
+                    
+                    console.log(response.getSurat.nomorSuratBalasan);
                 },
                 error: function() {
                   console.log('Terjadi kesalahan saat memuat konten.');
@@ -272,6 +437,7 @@
 
         }else if(status == 3){
             console.log('Edit Id Surat = ', id);
+            $('#modalEditSurat').modal('show');
         }
         
 

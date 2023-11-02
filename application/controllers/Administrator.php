@@ -186,13 +186,13 @@ class Administrator extends CI_Controller {
 
     public function detailProgres(){
         // var_dump($this->input->post());
-        // die();
+        // die(); 
 
         $this->db->select('jobdesc.*, user.namaLengkap');
         $this->db->from('jobdesc');
         $this->db->join('user', 'user.id = jobdesc.id_user');
         $this->db->where('jobdesc.id', $this->input->post('iduser'));
-        $data = $this->db->get()->row();
+        $data = $this->db->get()->result();
 
 
         $response = array(
@@ -203,7 +203,7 @@ class Administrator extends CI_Controller {
         
         $this->output
             ->set_content_type('application/json')
-            ->set_output(json_encode($response));
+            ->set_output(json_encode($data));
 
     }
 
@@ -395,14 +395,16 @@ class Administrator extends CI_Controller {
     public function ViewDataSurat(){
 
         $idSurat = $this->input->post('idSurat');
-
-        $data = [
-            'data' => $this->db->get_where('suratBalasan', ['idSurat' => $idSurat])->result(),
-        ];
+        $this->db->select('suratBalasan.*, divisi.namaDivisi');
+        $this->db->from('suratBalasan');
+        $this->db->join('divisi', 'divisi.idDivisi = suratBalasan.divisi', 'left');
+        $this->db->where('suratBalasan.idSurat', $idSurat);
+        $query = $this->db->get()->row_array();
+        
 
         $response = array(
             'status' => 200,
-            'data' => $data
+            'getSurat' => $query
         );
 
         
