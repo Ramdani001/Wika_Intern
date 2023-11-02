@@ -343,7 +343,11 @@ class Administrator extends CI_Controller {
                 $row[] = $result->statusSurat;
                 $row[] = $result->namaDivisi;
                 $row[] = $result->tglDibuat;
-                $row[] = "<button type='button' onclick='lihatSurat($result->idSurat)' class='btn btn-primary'>Lihat</button>";
+                $row[] = " <div class='d-flex'>
+                            <button type='button' onclick='lihatSurat($result->idSurat, 1)' class='btn btn-primary m-1'><i class='fa-solid fa-download'></i></button>
+                            <button type='button' onclick='lihatSurat($result->idSurat, 2)' class='btn btn-secondary m-1'><i class='fa-solid fa-eye'></i></button>
+                            <button type='button' onclick='lihatSurat($result->idSurat, 3)' class='btn btn-success m-1'><i class='fa-solid fa-pen-to-square'></i></button>
+                        ";
 
                 $data[] = $row;
         }
@@ -386,6 +390,25 @@ class Administrator extends CI_Controller {
 
         $pdf->stream('Surat_Balasan.pdf', ['Attchment' => 0]);
 
+    }
+
+    public function ViewDataSurat(){
+
+        $idSurat = $this->input->post('idSurat');
+
+        $data = [
+            'data' => $this->db->get_where('suratBalasan', ['idSurat' => $idSurat])->result(),
+        ];
+
+        $response = array(
+            'status' => 200,
+            'data' => $data
+        );
+
+        
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
     }
 
 }

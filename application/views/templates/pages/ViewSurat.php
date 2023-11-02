@@ -16,54 +16,138 @@
           
         </tbody>
     </table>
-
+`
     <!-- Modal Detail -->
-    <div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="modalDetailLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="modalViewSurat" tabindex="-1" aria-labelledby="modalDetailLabel" aria-hidden="true">
+        <div class="modal-dialog large">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalDetailLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="modalDetailLabel">Surat Penerimaan</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php base_url(); ?>Administrator/Kehadiran" method="post"> 
-                        <!-- NIM -->
-                        <input type="hidden" name="id_user" class="form-control" id="id_user" placeholder="Id User" readonly>
-                        <div class="mb-3">
-                            <label for="nim" class="form-label">NIM/NRP</label>
-                            <input type="text" name="nim" class="form-control" id="nim" placeholder="NIM" readonly>
+                    <div id="suratHeader">
+                        <div class="d-flex justify-content-center">
+                            <img src="<?= base_url() ?>assets/img/logoSuratPenerimaan.png" alt="Logo WIKA" width="100"
+                            style="
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 30%;
+                            height: 15%;
+                            "
+                            >
                         </div>
-                        <!-- Nama Lengkap -->
-                        <div class="mb-3">
-                            <label for="namaLengkap" class="form-label">Nama Lengkap</label>
-                            <input type="text" name="namaLengkap" class="form-control" id="namaLengkap" placeholder="Nama Lengkap" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <div class="form-group"> <!-- Date input -->
-                                <label for="tglHadir" class="form-label">Tanggal Hadir</label>
-                                <input type="date" name="tglHadir" class="form-control" id="tglHadir" placeholder="Tanggal Hadir">
+                        <div class="" style="display: flex; flex: 1; margin-top: 20px;">
+                        <div style="font-size: 10.5px;">
+                            <table class="mb-2">
+                                <tr>
+                                    <td>
+                                    Nomor :  SE.01.01/WIK.C.MJK.KP.00030/2023  <!-- Nomor Surat Penerimaan -->
+                                    </td>
+                                    <td class="" style="padding-left: 120px;">
+                                    Majalengka,  17 Oktober 2023 <!-- Tanggal Dibuat -->
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="text-justify">
+                                Kepada Yth. <br>
+                                Rektor Institut Teknologi Petroleum Balongan <br>
+                                Di Tempat
+                                <br>
+                                    <span class="ml-4">Perihal : <b> Izin Praktik Kerja Lapangan (PKL) </b></span>
+                                <br>
+                                Dengan Hormat, <br>
+                                Merujuk Surat Permohonan Nomor <b>718/ITPB/FS/KP/X/2023</b> tanggal <b>16 Oktober 2023</b>, terkait
+                                Permohonan Praktik Kerja Lapangan (PKL) di PT Wijaya Karya Industri & Konstruksi Pabrikasi Baja
+                                Majalengka terhadap <b>Mahasiswa</b> di bawah ini :
+                            </div>
+                            <br>
+                            <table style="border-collapse: collapse; text-align: center; width: 100%;" >
+                            <thead>
+                                <tr class="border">
+                                    <th class="border" style="width: 10%;">NO</th>
+                                    <th class="border" style="width: 30%;">Nama</th>
+                                    <th class="border" style="width: 25%;">Nim</th>
+                                    <th class="border" style="width: 30%;">Jurusan / Kompetensi</th>
+                                </tr>    
+                            </thead>
+                            <tbody>
+                                <tr class="border">
+                                    <td class="border"> 1 </td>
+                                    <td class="border"> Rizkan Ramdani </td>
+                                    <td class="border"> 2043014 </td>
+                                    <td class="border"> Teknik Informatika </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+
+                        <p class="text-justify">
+                        Bersama dengan ini kami sampaikan bahwa permohonan tersebut <b>Telah / Belum Bisa Kami Terima</b>
+                        untuk melaksanakan Praktik Kerja Lapangan di Pabrikasi Baja Majalengka, PT Wijaya Karya Industri
+                        & Konstruksi. Selanjutnya Praktik Kerja Lapangan dilaksanakan dengan ketentuan sebagai berikut : 
+
+                        </p>
+                        <table class="text-start" style="border-collapse: collapse; text-align: center; width: 65%;" >
+                            <tr>
+                                <td>Waktu Pelaksanaan</td>
+                                <td> : </td>
+                                <td class="fw-semibold">23 Oktober s.d 23 November 2023</td>
+                            </tr>
+                            <tr>
+                                <td>Penempatan Unit Kerja</td>
+                                <td> : </td>
+                                <td class="fw-semibold">Safety, Health and Environment </td>
+                            </tr>
+                            <tr>
+                                <td>Pembimbing</td>
+                                <td> : </td>
+                                <td class="fw-semibold">Bapak Joko Prasetyo </td>
+                            </tr>
+                        </table>
+                        <p class="text-justify mt-2">
+                            Mohon melakukan konfirmasi maksimal H-3 sebelum waktu pelaksanaan pada kontak di bawah ini
+                        </p>
+                        <table class="text-start" style="margin-top: -10px; border-collapse: collapse; text-align: center; width: 65%;" >
+                            <tr>
+                                <td>Personalia</td>
+                                <td> : </td>
+                                <td class="fw-semibold">Jagad Giyana C. </td>
+                            </tr>
+                            <tr>
+                                <td>Kontak Person</td>
+                                <td> : </td>
+                                <td class="fw-semibold">0822 4291 0617 </td>
+                            </tr>
+                        </table>
+                        <p class="text-justify mt-1">
+                            Demikian surat ini disampaikan, atas perhatian dan kerjasamanya kami ucapkan terima kasih
+                        </p>
+                      
+                            <div class="text-end justify-content-end">
+                                    <span class="" style="margin-right: 113px;">
+                                        Hormat Kami, 
+                                    </span>
+                                    <br>
+                                <span class="text-decoration-underline" >
+                                    PT. Wijaya Karya Industri & Konstruksi <br>
+                                </span>
+                                <div class="mt-2 mb-2" style="margin-right: 100px;">
+                                    <img src="<?= base_url(); ?>assets/img/QrCode/Personalia.png" alt="" width="80">
+                                </div>
+                                <span class="" style="margin-right: 42px;">
+                                    <span style="margin-right: 118px;">
+                                        Titan Rifesha
+                                    </span>
+                                    <br>
+                                    Kasie Keuangan & Personalia 
+
+                                </span>
                             </div>
                         </div>
-                        <!-- Status -->
-                        <div class="mb-3">
-                        <label for="namaLengkap" class="form-label">Status Kehadiran</label>
-                            <select class="form-select" id="statusKehadiran" aria-label="Default select example" name="status" id="status_kehadiran">
-                                <option selected>Status</option>
-                                <option value="Hadir">Hadir</option>
-                                <option value="Tidak Hadir">Tidak Hadir</option>
-                            </select>
-                        </div>
-                        <!-- Alasan -->
-                        <div class="mb-3 d-none" id="formAlasan">
-                             <label for="alasan" class="form-label">Alasan</label>
-                             <textarea class="form-control" id="alasan" rows="5" name="alasan"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
+                    </div>
                 </div>
-                                </form>
             </div>
         </div>
     </div>
@@ -146,24 +230,50 @@
 
         });
         
-    function lihatSurat(e){
+    function lihatSurat(e, status){
         console.log("Id Surat = ", e);
+        console.log("Id Surat = ", status);
+        var id = e;
 
-        var form = document.createElement("form");
-        form.method = "POST";
-        form.action = "Administrator/DetailSurat";
-        form.target = "_blank";
+        if(status == 1){
+            var form = document.createElement("form");
+            form.method = "POST";
+            form.action = "Administrator/DetailSurat";
+            form.target = "_blank";
 
-        var input = document.createElement("input");
-        input.type = "hidden";
-        input.name = "idSurat";
-        input.value = e;
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "idSurat";
+            input.value = e;
 
-        form.appendChild(input);
+            form.appendChild(input);
 
-        document.body.appendChild(form);
+            document.body.appendChild(form);
 
-        form.submit();
+            form.submit();
+        }else if(status == 2){
+            console.log('Lihat Id Surat = ', id);
+            var dataToSend = { idSurat: id };
+            $.ajax({ 
+                url: 'Administrator/ViewDataSurat',
+                data: dataToSend,
+                method: 'POST',
+                success: function(response) {        
+
+                    $('#modalViewSurat').modal('show');
+
+                    // console.log(response);
+                    console.log(response);
+                },
+                error: function() {
+                  console.log('Terjadi kesalahan saat memuat konten.');
+                }
+            });
+
+        }else if(status == 3){
+            console.log('Edit Id Surat = ', id);
+        }
+        
 
     }
 

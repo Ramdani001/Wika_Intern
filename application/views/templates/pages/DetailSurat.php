@@ -18,7 +18,7 @@
         style=" display: block; margin-left: 50px; width: 250px; height: 90px;">
         
     </div>
-    <div style="width: 85%;">
+    <div style="width: 85%;"> 
             
         <?php foreach ($data as $surat) { ?>
                 
