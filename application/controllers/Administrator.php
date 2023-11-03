@@ -413,4 +413,182 @@ class Administrator extends CI_Controller {
             ->set_output(json_encode($response));
     }
 
+    public function EditDataSurat(){
+
+        $idSurat = $this->input->post('idSurat');
+        $this->db->select('suratBalasan.*, divisi.namaDivisi, divisi.idDivisi');
+        $this->db->from('suratBalasan');
+        $this->db->join('divisi', 'divisi.idDivisi = suratBalasan.divisi', 'left');
+        $this->db->where('suratBalasan.idSurat', $idSurat);
+        $query = $this->db->get()->row_array();
+        
+
+        $response = array(
+            'status' => 200,
+            'getSurat' => $query,
+            'getDivisi' => $this->db->get('divisi')->result(),
+        );
+
+        
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
+
+    public function UpdateSuratBalasan(){
+       
+        $idSurat = $this->input->post('idSurat');
+
+        if(!empty($_FILES['ttd_digital']['name'])){
+            var_dump($_FILES['ttd_digital']);
+            die();
+           
+        }else{
+
+            if($this->input->post('jumlahPemohon') == 1){
+                    $data = array(
+                        'nomorSuratBalasan' => $this->input->post('nomorSuratBalasan'),
+                        'asalSekolahPemohon' => $this->input->post('asalSekolahPemohon'),
+                        'tglDibuat' => $this->input->post('tglDibuat'),
+                        'nomorSuratMou' => $this->input->post('nomorSuratMou'),
+                        'tglSuratMou' => $this->input->post('tglSuratMou'),
+                        'statusPemohon' => $this->input->post('statusPemohon'),
+                        'jumlahPemohon' => $this->input->post('jumlahPemohon'),
+                        
+                        'namaPemohon1' => $this->input->post('namaPemohon1'),
+                        'nim1' => $this->input->post('nim1'),
+                        'jurusan1' => $this->input->post('jurusan1'),
+
+                    );
+            }else if($this->input->post('jumlahPemohon') == 2){
+                    $data = array(
+                        'nomorSuratBalasan' => $this->input->post('nomorSuratBalasan'),
+                        'asalSekolahPemohon' => $this->input->post('asalSekolahPemohon'),
+                        'tglDibuat' => $this->input->post('tglDibuat'),
+                        'nomorSuratMou' => $this->input->post('nomorSuratMou'),
+                        'tglSuratMou' => $this->input->post('tglSuratMou'),
+                        'statusPemohon' => $this->input->post('statusPemohon'),
+                        'jumlahPemohon' => $this->input->post('jumlahPemohon'),
+                        
+                        'namaPemohon1' => $this->input->post('namaPemohon1'),
+                        'nim1' => $this->input->post('nim1'),
+                        'jurusan1' => $this->input->post('jurusan1'),
+
+                        'namaPemohon2' => $this->input->post('namaPemohon2'),
+                        'nim2' => $this->input->post('nim2'),
+                        'jurusan2' => $this->input->post('jurusan2'),
+
+
+                    );
+            }else if($this->input->post('jumlahPemohon') == 3){
+                    $data = array(
+                        'nomorSuratBalasan' => $this->input->post('nomorSuratBalasan'),
+                        'asalSekolahPemohon' => $this->input->post('asalSekolahPemohon'),
+                        'tglDibuat' => $this->input->post('tglDibuat'),
+                        'nomorSuratMou' => $this->input->post('nomorSuratMou'),
+                        'tglSuratMou' => $this->input->post('tglSuratMou'),
+                        'statusPemohon' => $this->input->post('statusPemohon'),
+                        'jumlahPemohon' => $this->input->post('jumlahPemohon'),
+                        
+                        'namaPemohon1' => $this->input->post('namaPemohon1'),
+                        'nim1' => $this->input->post('nim1'),
+                        'jurusan1' => $this->input->post('jurusan1'),
+
+                        'namaPemohon2' => $this->input->post('namaPemohon2'),
+                        'nim2' => $this->input->post('nim2'),
+                        'jurusan2' => $this->input->post('jurusan2'),
+
+                        'namaPemohon3' => $this->input->post('namaPemohon3'),
+                        'nim3' => $this->input->post('nim3'),
+                        'jurusan3' => $this->input->post('jurusan3'),
+
+                    );
+            }else if($this->input->post('jumlahPemohon') == 4){
+                    $data = array(
+                        'nomorSuratBalasan' => $this->input->post('nomorSuratBalasan'),
+                        'asalSekolahPemohon' => $this->input->post('asalSekolahPemohon'),
+                        'tglDibuat' => $this->input->post('tglDibuat'),
+                        'nomorSuratMou' => $this->input->post('nomorSuratMou'),
+                        'tglSuratMou' => $this->input->post('tglSuratMou'),
+                        'statusPemohon' => $this->input->post('statusPemohon'),
+                        'jumlahPemohon' => $this->input->post('jumlahPemohon'),
+                        
+                        'namaPemohon1' => $this->input->post('namaPemohon1'),
+                        'nim1' => $this->input->post('nim1'),
+                        'jurusan1' => $this->input->post('jurusan1'),
+
+                        'namaPemohon2' => $this->input->post('namaPemohon2'),
+                        'nim2' => $this->input->post('nim2'),
+                        'jurusan2' => $this->input->post('jurusan2'),
+
+                        'namaPemohon3' => $this->input->post('namaPemohon3'),
+                        'nim3' => $this->input->post('nim3'),
+                        'jurusan3' => $this->input->post('jurusan3'),
+
+                        'namaPemohon4' => $this->input->post('namaPemohon4'),
+                        'nim4' => $this->input->post('nim4'),
+                        'jurusan4' => $this->input->post('jurusan4'),
+
+                    );
+            }else if($this->input->post('jumlahPemohon') == 5){
+                    $data = array(
+                        'nomorSuratBalasan' => $this->input->post('nomorSuratBalasan'),
+                        'asalSekolahPemohon' => $this->input->post('asalSekolahPemohon'),
+                        'tglDibuat' => $this->input->post('tglDibuat'),
+                        'nomorSuratMou' => $this->input->post('nomorSuratMou'),
+                        'tglSuratMou' => $this->input->post('tglSuratMou'),
+                        'statusPemohon' => $this->input->post('statusPemohon'),
+                        'jumlahPemohon' => $this->input->post('jumlahPemohon'),
+                        
+                        'namaPemohon1' => $this->input->post('namaPemohon1'),
+                        'nim1' => $this->input->post('nim1'),
+                        'jurusan1' => $this->input->post('jurusan1'),
+
+                        'namaPemohon2' => $this->input->post('namaPemohon2'),
+                        'nim2' => $this->input->post('nim2'),
+                        'jurusan2' => $this->input->post('jurusan2'),
+
+                        'namaPemohon3' => $this->input->post('namaPemohon3'),
+                        'nim3' => $this->input->post('nim3'),
+                        'jurusan3' => $this->input->post('jurusan3'),
+
+                        'namaPemohon4' => $this->input->post('namaPemohon4'),
+                        'nim4' => $this->input->post('nim4'),
+                        'jurusan4' => $this->input->post('jurusan4'),
+
+                        'namaPemohon5' => $this->input->post('namaPemohon5'),
+                        'nim5' => $this->input->post('nim5'),
+                        'jurusan5' => $this->input->post('jurusan5'),
+
+                    );
+            }
+
+            $this->db->set($data);
+            $this->db->where('idSurat', $idSurat);
+            $this->db->update('suratbalasan');
+
+        }
+
+        
+
+         // Memuat library Upload
+            // $config['upload_path'] = './assets/img/QrCode';
+            // $config['allowed_types'] = 'gif|jpg|png|PNG|jpeg';
+            // $config['max_size']     = '600000';
+            // $config['max_width'] = '10240';
+            // $config['max_height'] = '10000';
+
+            // $this->load->library('upload', $config);
+
+            
+            // if ($this->upload->do_upload('ttd_digital')) {
+            //     $upload_data = $this->upload->data();
+            //     $ttd = $upload_data['file_name'];
+                
+            // } else {
+            //     $error = $this->upload->display_errors();
+            //     echo "Gagal mengunggah file: " . $error;
+            // }
+    }
+
 }
