@@ -20,7 +20,7 @@ class divisiModels extends CI_Model {
         if(isset($_POST['order'])){
             $this->db->order_by($this->order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
         }else{
-            $this->db->order_by('idDivisi', 'ASC');
+            $this->db->order_by('idDivisi', 'DESC');
         }
 
     }

@@ -722,9 +722,44 @@ class Administrator extends CI_Controller {
         // die();
 
         if($this->input->get('Page') == "Insert"){
+            
+            $data = array(
+                'namaDivisi' => $this->input->post('namaDivisi'),
+                'lokasiDivisi' => $this->input->post('lokasiDivisi'),
+            );
 
-        }else if($this->input->get('Page') == "Update"){
+            $query = $this->db->insert('divisi', $data);
 
+            if($query){
+                $this->session->set_Flashdata('success', 'suratSuccess');
+                redirect('Administrator');
+            }else{
+                $this->session->set_Flashdata('error', 'gagal');
+                redirect('Administrator');
+            }
+            
+
+        }else if($this->input->get('Page') == "Edit"){
+
+            $idDivisi = $this->input->post('idDivisi');
+
+            $data = array(
+                'namaDivisi' => $this->input->post('namaDivisi'),
+                'lokasiDivisi' => $this->input->post('lokasiDivisi'),
+            );
+
+            $this->db->set($data);
+            $this->db->where('idDivisi', $idDivisi);
+            $query = $this->db->update('divisi');
+
+            if($query){
+                $this->session->set_Flashdata('success', 'suratSuccess');
+                redirect('Administrator');
+            }else{
+                $this->session->set_Flashdata('error', 'gagal');
+                redirect('Administrator');
+            }
+            
         }else if($this->input->get('Page') == "GetUpdate"){
 
             $idDivisi = $this->input->post('idDivisi');
@@ -738,6 +773,19 @@ class Administrator extends CI_Controller {
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode($response));
+        }else if($this->input->get('Page') == "HapusDivisi"){
+            
+            $this->db->where('idDivisi', $this->input->post('idHapus'));
+	        $query = $this->db->delete('divisi');
+
+            if($query){
+                $this->session->set_Flashdata('success', 'suratSuccess');
+                redirect('Administrator');
+            }else{
+                $this->session->set_Flashdata('error', 'gagal');
+                redirect('Administrator');
+            }
+
         }
 
     }
