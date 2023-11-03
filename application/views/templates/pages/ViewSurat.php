@@ -560,6 +560,7 @@ $(document).ready(function() {
                             $('#nomorSuratMou').text(response.getSurat.nomorSuratMou);
                             $('#tglSuratMou').text(formatDate(response.getSurat.tglSuratMou));
                             $('#statusPemohon').text(response.getSurat.statusPemohon);
+                            $('#statusSurat').text(response.getSurat.statusSurat);
 
                             // Kondisi Jumlah Pemohon
                             if(jumlahPemohon == 1){
@@ -691,7 +692,7 @@ $(document).ready(function() {
                             $("#editStatusSurat option[value='"+ response.getSurat.statusSurat +"']").prop('selected', true);
 
                             $('#editTglMulai').val(response.getSurat.tglMulai);
-                            $('#editTglAkhir').val(response.getSurat.tglAkhir);
+                            $('#EditTglAkhir').val(response.getSurat.tglAkhir);
                             $('#editNamaPembimbing').val(response.getSurat.namaPembimbing);
                             $('#editTtd_digital').val(response.getSurat.ttd_digital);
                             

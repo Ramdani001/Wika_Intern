@@ -459,7 +459,23 @@ class Administrator extends CI_Controller {
                         'nim1' => $this->input->post('nim1'),
                         'jurusan1' => $this->input->post('jurusan1'),
 
+                        'statusSurat' => $this->input->post('statusSurat'),
+                        'tglMulai' => $this->input->post('tglMulai'),
+                        'tglAkhir' => $this->input->post('tglAkhir'),
+                        'divisi' => $this->input->post('divisi'),
+                        'namaPembimbing' => $this->input->post('namaPembimbing'),
+                        'ttd_digital' => $this->input->post('old_ttd_digital'),
                     );
+                    
+                    $this->db->set($data);
+                    $this->db->where('idSurat', $idSurat);
+                    $query = $this->db->update('suratbalasan');
+                    if($query){
+                        redirect('Administrator');
+                    }else{
+                        var_dump($query);
+                        die();
+                    }
             }else if($this->input->post('jumlahPemohon') == 2){
                     $data = array(
                         'nomorSuratBalasan' => $this->input->post('nomorSuratBalasan'),
@@ -478,8 +494,19 @@ class Administrator extends CI_Controller {
                         'nim2' => $this->input->post('nim2'),
                         'jurusan2' => $this->input->post('jurusan2'),
 
-
+                        
+                        'statusSurat' => $this->input->post('statusSurat'),
+                        'tglMulai' => $this->input->post('tglMulai'),
+                        'tglAkhir' => $this->input->post('tglAkhir'),
+                        'divisi' => $this->input->post('divisi'),
+                        'namaPembimbing' => $this->input->post('namaPembimbing'),
+                        'ttd_digital' => $this->input->post('old_ttd_digital'),
                     );
+                    
+                    $this->db->set($data);
+                    $this->db->where('idSurat', $idSurat);
+                    $this->db->update('suratbalasan');
+                    redirect('Administrator');
             }else if($this->input->post('jumlahPemohon') == 3){
                     $data = array(
                         'nomorSuratBalasan' => $this->input->post('nomorSuratBalasan'),
@@ -502,7 +529,18 @@ class Administrator extends CI_Controller {
                         'nim3' => $this->input->post('nim3'),
                         'jurusan3' => $this->input->post('jurusan3'),
 
+                        'statusSurat' => $this->input->post('statusSurat'),
+                        'tglMulai' => $this->input->post('tglMulai'),
+                        'tglAkhir' => $this->input->post('tglAkhir'),
+                        'divisi' => $this->input->post('divisi'),
+                        'namaPembimbing' => $this->input->post('namaPembimbing'),
+                        'ttd_digital' => $this->input->post('old_ttd_digital'),
                     );
+                    
+                    $this->db->set($data);
+                    $this->db->where('idSurat', $idSurat);
+                    $this->db->update('suratbalasan');
+                    redirect('Administrator');
             }else if($this->input->post('jumlahPemohon') == 4){
                     $data = array(
                         'nomorSuratBalasan' => $this->input->post('nomorSuratBalasan'),
@@ -528,8 +566,20 @@ class Administrator extends CI_Controller {
                         'namaPemohon4' => $this->input->post('namaPemohon4'),
                         'nim4' => $this->input->post('nim4'),
                         'jurusan4' => $this->input->post('jurusan4'),
+                        
+                        'statusSurat' => $this->input->post('statusSurat'),
+                        'tglMulai' => $this->input->post('tglMulai'),
+                        'tglAkhir' => $this->input->post('tglAkhir'),
+                        'divisi' => $this->input->post('divisi'),
+                        'namaPembimbing' => $this->input->post('namaPembimbing'),
+                        'ttd_digital' => $this->input->post('old_ttd_digital'),
 
                     );
+                    
+                    $this->db->set($data);
+                    $this->db->where('idSurat', $idSurat);
+                    $this->db->update('suratbalasan');
+                    redirect('Administrator');
             }else if($this->input->post('jumlahPemohon') == 5){
                     $data = array(
                         'nomorSuratBalasan' => $this->input->post('nomorSuratBalasan'),
@@ -559,13 +609,23 @@ class Administrator extends CI_Controller {
                         'namaPemohon5' => $this->input->post('namaPemohon5'),
                         'nim5' => $this->input->post('nim5'),
                         'jurusan5' => $this->input->post('jurusan5'),
+                        
+                        'statusSurat' => $this->input->post('statusSurat'),
+                        'tglMulai' => $this->input->post('tglMulai'),
+                        'tglAkhir' => $this->input->post('tglAkhir'),
+                        'divisi' => $this->input->post('divisi'),
+                        'namaPembimbing' => $this->input->post('namaPembimbing'),
+                        'ttd_digital' => $this->input->post('old_ttd_digital'),
 
                     );
-            }
+                
+                $this->db->set($data);
+                $this->db->where('idSurat', $idSurat);
+                $this->db->update('suratbalasan');
 
-            $this->db->set($data);
-            $this->db->where('idSurat', $idSurat);
-            $this->db->update('suratbalasan');
+                redirect('Administrator');
+
+            }
 
         }
 
