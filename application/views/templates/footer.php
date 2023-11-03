@@ -103,11 +103,27 @@
 
 
         }
+
+        $('#ProfileLink').click(function() {
+            var value = $(this).attr('value');
+            console.log(value);
+
+            $.ajax({ 
+                url: 'View/' + value,
+                method: 'POST',
+                success: function(response) {        
+                    // console.log(response);
+                    $('#content').html(response);
+                },
+                error: function() {
+                  console.log('Terjadi kesalahan saat memuat konten.');
+                }
+              });
+      });
       </script>
 
-    </script>
 
-   
+    
   
 
 

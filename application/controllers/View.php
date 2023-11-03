@@ -372,4 +372,10 @@ class View extends CI_Controller {
         $this->load->view('templates/pages/ViewSurat');
     }
 
+    public function ProfilePage(){
+        $this->userModels->security();
+
+        $this->load->view('templates/pages/ProfilePage');
+    }
+
 }
