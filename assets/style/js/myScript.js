@@ -123,7 +123,9 @@ if(flashData){
                 }
               });
         });
-    })
+        
+
+    });
     
 
     // Single Pages Application (SPA)

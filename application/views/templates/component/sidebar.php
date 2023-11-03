@@ -82,7 +82,15 @@
                         <span>Surat</span>
                     </div>               
                 </li>
-            <?php } ?>
+                <?php } ?>
+                <?php if($user['roleId']  == '2'  || $user['roleId'] == '1') {?>
+                    <li class="nav-item ">
+                        <div class="nav-link SuratBalasan listMenu collapsed" value="PageDivisi">
+                            <i class="fas fa-fw fa-cog"></i>
+                            <span>Divisi</span>
+                        </div>               
+                    </li>
+                <?php }?>
                 
         </ul>
     </div>

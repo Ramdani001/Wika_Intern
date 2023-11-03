@@ -16,6 +16,15 @@ class View extends CI_Controller {
         $this->load->view('templates/pages/Dashboard');
     }
 
+    public function PageDivisi(){
+        // $data = [
+        //     'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
+        //     'getUser' => $this->db->get('user')->result()
+        // ];
+
+        $this->load->view('templates/pages/PageDivisi');
+    }
+
     public function JobDesc(){
 
         $this->userModels->security();
@@ -376,6 +385,29 @@ class View extends CI_Controller {
         $this->userModels->security();
 
         $this->load->view('templates/pages/ProfilePage');
+    }
+
+    public function Profile(){
+        
+        $id = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $id_user = $id['divisi'];
+
+        $this->db->select('user.*, divisi.namaDivisi');
+        $this->db->from('user');
+        $this->db->join('divisi', 'divisi.idDivisi = user.divisi');
+        $this->db->where('user.divisi', $id_user);
+        $data = $this->db->get()->row();
+
+        $response = array(
+            'status' => 200,
+            'getProfile' => $data,
+        );
+
+        
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
     }
 
 }

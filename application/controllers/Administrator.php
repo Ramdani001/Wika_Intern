@@ -8,7 +8,9 @@ class Administrator extends CI_Controller {
     public function __construct(){
         parent::__construct();
 
+        $this->load->model('userModels');
         $this->load->model('ViewSuratModels');
+        $this->load->model('divisiModels');
     }
     public function index(){
         $email = $this->session->userdata('email');
@@ -649,6 +651,95 @@ class Administrator extends CI_Controller {
             //     $error = $this->upload->display_errors();
             //     echo "Gagal mengunggah file: " . $error;
             // }
+    }
+
+    public function updateProfile(){
+        $idUser = $this->input->post('idUser');
+        if(empty($_FILES['gambarProfil']['name'])){
+            $data = array(
+                'nim' => $this->input->post('nim'),
+                'namaLengkap' => $this->input->post('namaLengkap'),
+                'email' => $this->input->post('email'),
+                'noTelp' => $this->input->post('noTelp'),
+                'jurusan' => $this->input->post('jurusan'),
+            );
+                 
+            $this->db->set($data);
+            $this->db->where('id', $idUser);
+            $query = $this->db->update('user');
+        }
+
+
+        
+        if($query){
+            redirect('Administrator');
+        }else{
+            var_dump("Gagal Update");
+            die();
+        }
+
+
+    }
+
+    public function getDivisi(){
+
+        $this->userModels->security();
+
+        $hasil = $this->divisiModels->getDataTable();
+        
+        $data = [];
+        $no = $_POST['start'] + 1;
+
+        foreach($hasil as $result){
+            
+            if($result->idDivisi != 4 && $result->idDivisi != 5){
+                $row = array();
+                $row[] = $no++;
+                $row[] = $result->namaDivisi;
+                $row[] = $result->lokasiDivisi;
+                $row[] = "<div class='row gap-2'>
+                            <button type='button' onclick='aksiDivisi($result->idDivisi, 1)' class='btn btn-success col'><i class='fa-solid fa-pencil'></i></button>
+                            <button type='button' onclick='aksiDivisi($result->idDivisi, 2)' class='btn btn-danger col'><i class='fa-solid fa-trash-can'></i></i></button>
+                          </div>";
+
+                $data[] = $row;
+            }
+        }
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->divisiModels->count_all_data(),
+            "recordsFiltered" => $this->divisiModels->count_filtered_data(),
+            "data" => $data,
+        );
+
+        $this->output->set_content_type('application/json')->set_output(json_encode($output));
+
+    }
+
+    public function ControlDivisi(){
+        // var_dump($this->input->post());
+        // die();
+
+        if($this->input->get('Page') == "Insert"){
+
+        }else if($this->input->get('Page') == "Update"){
+
+        }else if($this->input->get('Page') == "GetUpdate"){
+
+            $idDivisi = $this->input->post('idDivisi');
+
+            $response = array(
+                'status' => 200,
+                'data' => $this->db->get_where('divisi', ['idDivisi' => $idDivisi])->row_array(),
+            );
+    
+            
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($response));
+        }
+
     }
 
 }

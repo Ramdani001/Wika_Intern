@@ -102,3 +102,17 @@
     background-color: #007bff;
     transition: background-color 0.3s;
 }
+
+#formEditUser{
+    width: 50% !important;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+/* #formEditUser:hover{
+    transition-duration: 500ms;
+    transition-property: transform, display;
+    display: hidden;
+    transition-timing-function: ease-in-out; */
+    /* transform: translate(-100px, 18px); */
+/* } */
