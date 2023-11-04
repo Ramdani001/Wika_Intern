@@ -5,7 +5,7 @@
 ?>
     
 <div class="container">
-    <!-- JobDesc -->
+    <!-- JobDec -->
     <?php foreach ($jobdesc as $data) { ?>
         <?php if($data->status_job != 'Pending') {?>
             <div class="row mb-2 align-items-center w-full rounded shadow-sm border" style="height: 50px;">
@@ -62,26 +62,26 @@
         <div class="modal-body">
             <form action="<?php base_url(); ?>Administrator/EvaluasiUpdate" method="post">
 
-            <input type="text" class="form-control" placeholder="Id Job" name="idJob" id="idJob" hidden>
-            <input type="text" class="form-control" placeholder="Id User" name="id_user" id="id_user" hidden>
+            <input type="text" class="form-control" placeholder="Id Job" name="idJob" id="editidJob" hidden>
+            <input type="text" class="form-control" placeholder="Id User" name="id_user" id="editid_user" hidden>
                 <div class="mb-3">
                     <label for="namaLengkap" class="form-label">Nama Lengkap</label>
-                    <input type="text" class="form-control" placeholder="Nama Lengkap" name="namaLengkap" id="namaLengkap" readonly>
+                    <input type="text" class="form-control" placeholder="Nama Lengkap" name="namaLengkap" id="editnamaLengkap" readonly>
                 </div>
 
                 <div class="mb-3">
                     <label for="judulJob" class="form-label">Tittle Job</label>
-                    <input type="text" class="form-control" id="judulJob" placeholder="Judul Job Desc" name="judulJob" readonly>
+                    <input type="text" class="form-control" id="editjudulJob" placeholder="Judul Job Desc" name="judulJob" readonly>
                 </div>
 
                 <div class="mb-3">
                     <label for="deskripsi" class="form-label">Description Job</label>
-                    <textarea class="form-control" id="deskripsi" rows="5" name="deskripsi" readonly></textarea>
+                    <textarea class="form-control" id="editdeskripsi" rows="5" name="deskripsi" readonly></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="statusJob">Status Job</label>
-                    <select name="statusJob" id="statusJob" class="form-select" aria-label="Default select example">
+                    <select name="statusJob" id="editstatusJob" class="form-select" aria-label="Default select example">
                         <option selected>Status Job</option>
                         <option value="Progres">Progres</option>
                         <option value="Done">Done</option>
@@ -93,12 +93,12 @@
                     <!-- Deskripsi Progres -->
                     <div class="mb-3">
                         <label for="deskripsiProgres" class="form-label">Progres Description</label>
-                        <textarea class="form-control" id="deskripsiProgres" rows="5" name="deskripsiProgres" readonly></textarea>
+                        <textarea class="form-control" id="editdeskripsiProgres" rows="5" name="deskripsiProgres" readonly></textarea>
                     </div>
                     <!-- Evaluasi -->
                     <div class="mb-3">
                         <label for="evaluasi" class="form-label">Evaluasi Job</label>
-                        <textarea class="form-control" id="evaluasi" rows="5" name="evaluasi" placeholder="Jika Sesuai Isi Dengan tanda '-'"></textarea>
+                        <textarea class="form-control" id="editevaluasi" rows="5" name="evaluasi" placeholder="Jika Sesuai Isi Dengan tanda '-'"></textarea>
                     </div>
                 </div>
 

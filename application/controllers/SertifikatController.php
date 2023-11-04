@@ -78,9 +78,17 @@ class SertifikatController extends CI_Controller {
 
     public function GetEdit(){
         
+        $id = $this->input->post('id');
+
+        $this->db->select('penilaian.*, user.nim, user.namaLengkap, user.jurusan, user.asalSekolah');
+        $this->db->from('penilaian');
+        $this->db->join('user', 'user.id = penilaian.idUser', 'left');
+        $this->db->where('penilaian.id_penilaian', $id);
+        $query = $this->db->get()->row_array();
+
         $response = array(
-            'status' => 200
-            // 'getSurat' => $query,
+            'status' => 200,
+            'getSertifikat' => $query,
             // 'getDivisi' => $this->db->get('divisi')->result(),
         );
 

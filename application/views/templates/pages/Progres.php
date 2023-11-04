@@ -8,7 +8,7 @@
     </nav>
     <div class="container">
 
-        <!-- JobDesc -->
+        <!-- JobDsc -->
         <?php foreach ($jobdesc as $data) { ?>
             <div class="row mb-2 align-items-center w-full rounded shadow-sm border" style="height: 50px;">
                 <div class="col-10 me-2">
@@ -50,7 +50,7 @@
                 </div>
             </div>
         <?php } ?>
-    </div>
+    </div> 
 
 <!-- Tambah -->
 

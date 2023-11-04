@@ -68,7 +68,9 @@ $(document).ready(function() {
                 method: 'POST',
                 success: function(response) {        
                     $('#PenilaianEdit').modal('show');
+                    
                     console.log(response);
+
                 },
                 error: function() {
                   console.log('Terjadi kesalahan saat memuat konten.');

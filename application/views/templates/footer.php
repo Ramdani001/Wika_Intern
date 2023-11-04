@@ -45,7 +45,6 @@
                 method: 'POST',
                 success: function(response) {        
                     $('#content').html(response);
-                    console.log(response);
                 },
                 error: function() {
                   console.log('Terjadi kesalahan saat memuat konten.');
@@ -53,22 +52,22 @@
               });
           }else if(e == "Evaluasi"){
             var sendEvaluasi = {e : e, iduser : iduser};
-
+            console.log(sendEvaluasi);
             $.ajax({  
                 type: "POST",
                 data: sendEvaluasi,
                 url: "<?php echo base_url('Administrator/detailProgres'); ?>",
-                success: function(response){
+                success: function(response){ 
+                    console.log(response.data[0].id);
+                    $('#editidJob').val(response.data[0].id);
+                    $('#editid_user').val(response.data[0].id_user);
+                    $('#editnamaLengkap').val(response.data[0].namaLengkap);
+                    $('#editjudulJob').val(response.data[0].judul_job);
+                    $("#editstatusJob option[value='"+ response.data[0].status_job +"").prop('selected', true);
+                    $('#editdeskripsi').val(response.data[0].deskripsi);
+                    $('#editdeskripsiProgres').val(response.data[0].progresDeskripsi);
 
-                    $('#idJob').val(response.data['id']);
-                    $('#id_user').val(response.data['id_user']);
-                    $('#namaLengkap').val(response.data['namaLengkap']);
-                    $('#judulJob').val(response.data['judul_job']);
-                    $("#statusJob option[value='"+ response.data['status_job'] +"']").prop('selected', true);
-                    $('#deskripsi').val(response.data['deskripsi']);
-                    $('#deskripsiProgres').val(response.data['progresDeskripsi']);
-
-                    if(response.data['status_job'] == "Done" || response.data['status_job'] == "Rejected"){
+                    if(response.data[0].status_job == "Done" || response.data[0].status_job == "Rejected"){
                       $('#contentEvaluasi').removeClass('d-none');
                     }else{
                       $('#contentEvaluasi').addClass('d-none');

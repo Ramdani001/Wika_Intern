@@ -29,11 +29,15 @@ class View extends CI_Controller {
 
         $this->userModels->security();
 
+       
+
         $this->db->select('jobdesc.*, user.namaLengkap');
         $this->db->from('jobdesc');
         $this->db->join('user', 'user.id = jobdesc.id_user', 'left');
         $this->db->order_by('created_at', 'DESC');
         $jobdesc = $this->db->get()->result();
+        
+
         
         $data = [
             'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
@@ -306,17 +310,29 @@ class View extends CI_Controller {
 
     public function Progres(){
         $this->userModels->security();
+        $filter = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $dataFil = $filter['id'];
+        $level = $filter['roleId'];
 
         $this->db->select('jobdesc.*, user.namaLengkap');
         $this->db->from('jobdesc');
         $this->db->join('user', 'user.id = jobdesc.id_user', 'left');
+
+        if($level == 1){
+            
+        }else if($level == 2){
+            
+        }else if($level == 3){
+            $this->db->where('jobdesc.id_user', $dataFil);
+        }
+
         $jobdesc = $this->db->get()->result();
-        
         $data = [
             'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
             'getUser' => $this->db->get('user')->result(),
             'jobdesc' => $jobdesc,
         ];
+        
 
         $this->load->view('templates/pages/Progres', $data);
     }
