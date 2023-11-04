@@ -76,4 +76,18 @@ class SertifikatController extends CI_Controller {
         $this->output->set_content_type('application/json')->set_output(json_encode($output));
     }
 
+    public function GetEdit(){
+        
+        $response = array(
+            'status' => 200
+            // 'getSurat' => $query,
+            // 'getDivisi' => $this->db->get('divisi')->result(),
+        );
+
+        
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
+
 }
