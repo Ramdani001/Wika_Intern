@@ -256,126 +256,42 @@
 </div>
 
 <!-- Modal Sertifikat -->
-
 <div class="modal fade" id="modalSertifikat" tabindex="-1" aria-labelledby="modalSertifikatLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="modalSertifikatLabel">Data Sertifikat</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
-            <!-- Header Surat -->
-            <div class="card-header">
-                <div class="card-title">Header</div>
-            </div>
-            <div class="mb-3">
-                <label for="nomorSuratBalasan">Nomor Surat</label>
-                <input type="text" class="form-control" placeholder="Nomor Surat">
-            </div>
-            <div class="mb-3">
-                <label for="asalSekolah">Asal Sekolah / Universitas</label>
-                <input type="text" class="form-control" placeholder="Asal Sekolah / Universitas" value="Rektor .....">
-            </div>
-            <div class="mb-3">
-                <label for="tglDibuat">Tanggal Dibuat</label>
-                <!-- Value Tanggal Ditambah Majalengka -->
-                <input type="tanggalDibuat" class="form-control" placeholder="Tanggal Dibuat">
-            </div>
-            <!-- Isi Surat -->
-            <div class="card-header">
-                <div class="card-title">Isi Surat</div>
-            </div>
-            <div class="mb-3">
-                <label for="nomorSuratMou">Nomor Surat MOU dari Anak PKL</label>
-                <input type="text" class="form-control" placeholder="Nomor Surat MOU dari Anak PKL">
-            </div>
-            <div class="mb-3">
-                <label for="tglSuratMou">Tanggal Surat MOU dari Anak PKL</label>
-                <input type="date" class="form-control" placeholder="Tanggal Surat MOU dari Anak PKL">
-            </div>
-            <div class="mb-3">
-                <label for="statusPemohon">Status Pemohon</label>
-                <input type="date" class="form-control" placeholder="Status Pemohon Mahasiswa/Siswa">
-            </div>
-            <!-- Tabel -->
-            <div class="mb-3">
-                <label for="statusPemohon">Jumlah Pemohon</label>
-                <input type="date" class="form-control" placeholder="Jumlah Pemohon">
-            </div>
+        <form action="<?= base_url(); ?>SertifikatController/Insert" method="POST">
             
-            <!-- ==== -->
-            <!-- Disini Jumlah Pemohon 1-5 Maka inputan yang keluar sesuai jumlah pemohon -->
-            <!-- ==== -->
-            
-            <!-- Pemohon 1 -->
-                <div class="mb-3">
-                    <label for="namaPemohon">Nama Pemohon</label>
-                    <input type="text" class="form-control" id="namaPemohon" placeholder="Nama Pemohon">
-                </div>
+            <input type="text" class="form-control mb-2" placeholder="No Surat Penilaian" name="no_surat_penilaian" id="no_surat_penilaian">
+            <input type="text" class="form-control mb-2" placeholder="Id User" name="id_user" id="id_user">
+            <input type="date" class="form-control mb-2" placeholder="Tanggal Dibuat" name="tgl_dibuat" id="tgl_dibuat">
+            <h5>
+                Penilaian - Kepribadian dan Perilaku
+            </h5>
+            <hr>
+            <input type="text" class="form-control mb-2" placeholder="Kedisiplinan" name="kedisiplinan" id="kedisiplinan">
+            <input type="text" class="form-control mb-2" placeholder="Tanggung Jawab" name="tanggung_jawab" id="tanggung_jawab">
+            <input type="text" class="form-control mb-2" placeholder="Kerapihan" name="kerapihan" id="kerapihan">
+            <input type="text" class="form-control mb-2" placeholder="Komunikasi" name="komunikasi" id="komunikasi">
+            <h5>
+                Penilaian - Proses Kerja
+            </h5>
+            <hr>
+            <input type="text" class="form-control mb-2" placeholder="Pemahaman Pekerjaan" name="pemahaman_pekerjaan" id="pemahaman_pekerjaan">
+            <input type="text" class="form-control mb-2" placeholder="Manajemen Waktu" name="manajemen_waktu" id="manajemen_waktu">
+            <input type="text" class="form-control mb-2" placeholder="Kerjasama Tim" name="kerjasama_tim" id="kerjasama_tim">
 
-                <div class="mb-3">
-                    <label for="nim">NIM / NRP</label>
-                    <input type="text" class="form-control" placeholder="NIM / NRP">
-                </div>
-
-                <div class="mb-3">
-                    <label for="jurusan">Jurusan / Kompetensi</label>
-                    <input type="text" class="form-control" placeholder="Jurusan / Kompetensi">
-                </div>
-                <!-- Pemohon 1 -->
-                
-                <div class="mb-3">
-                    <label for="statusSurat">Status Surat</label>
-                    <input type="text" class="form-control" placeholder="Status Surat">
-                </div>
-
-                <div class="mb-3">
-                    <label for="dateFrom">Waktu Pelaksanaan</label>
-                    <div>
-                        <div>
-                            <label for="dateFrom">Tanggal Mulai</label>
-                            <input type="date" class="form-control" id="dateFrom" name="dateFrom">
-                        </div>
-                        <div>
-                            <label for="statusSurat">Tanggal Akhir</label>
-                            <input type="date" class="form-control" id="dateTo" name="dateTo">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="divisi">Status Surat</label>
-                    <input type="text" class="form-control" placeholder="Penempatan Unit Kerja / Divisi">
-                </div>
-
-                <div class="mb-3">
-                    <label for="pembimbing">Nama Pembimbing</label>
-                    <input type="text" class="form-control" placeholder="Nama Pembimbing">
-                </div>
-
-                <div class="mb-3">
-                    <label for="personalia">Nama Personalia</label>
-                    <input type="text" class="form-control" placeholder="Nama Personalia">
-                </div>
-
-                <div class="mb-3">
-                    <label for="telp_personalia">Kontak Person</label>
-                    <input type="text" class="form-control" placeholder="Kontak Person Personalia" id="telp_personalia" name="telp_personalia">
-                </div>
-
-                <div class="mb-3">
-                    <label for="ttd_digital">Ttd Digital / QR Code</label>
-                    <input type="text" class="form-control" placeholder="Ttd Digital / QR Code" id="ttd_digital" name="ttd_digital">
-                </div>
-
+            <div class="mx-end">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
+      
     </div>
   </div>
 </div>

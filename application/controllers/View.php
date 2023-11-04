@@ -154,10 +154,6 @@ class View extends CI_Controller {
 
     }
 
-// Delete   
-// $this->db->where('id', $id);
-// $this->db->delete('mytable');
-
     public function getIntership(){
         $this->userModels->security();
 

@@ -1,10 +1,14 @@
+<div class="mb-3 d-flex">
+    <div onclick="childPage('ViewSurat')" id="ViewSurat" class="px-5 py-2 shadow-md fw-bold bg-custom bg-hover-custom me-1" style="cursor: pointer; border-right: 2px solid rgba(0, 0, 0, 0.65); border-bottom: 2px solid rgba(0, 0, 0, 0.65);">Surat</div>
 
+    <div onclick="childPage('Sertifikat')" id="Sertifikat" class="px-5 py-2 shadow-md bg-hover-custom" style="cursor: pointer; border-right: 2px solid rgba(0, 0, 0, 0.65); border-bottom: 2px solid rgba(0, 0, 0, 0.65);">Sertifikat</div>
+</div>
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>No</th>
                 <th>Nomor Surat</th>
-                <th>Asal Sekolah</th>
+                <th>Asal Sekolah</th> 
                 <th>Jumlah Pemohon</th>
                 <th>Status Surat</th>
                 <th>Divisi</th>
@@ -749,7 +753,28 @@ $(document).ready(function() {
 
                 }
     }
+    // Child Component
+    function childPage(status){
+        console.log('Status Component Page = ', status);
 
+        if(status === "Sertifikat"){
+            console.log("Sertifikat Click");
+            $('#SuratBalasan').removeClass('bg-custom');
+            $('#Sertifikat').addClass('bg-custom');
+
+            $.ajax({ 
+                url: 'View/' + status, 
+                method: 'POST',
+                success: function(response) {        
+                    $('#content').html(response);
+                },
+                error: function() {
+                  console.log('Terjadi kesalahan saat memuat konten.');
+                }
+              });
+        }
+
+    }
   
 
 </script>
