@@ -57,11 +57,11 @@
             </div>
             <div class="mb-3">
                 <label for="nomorSuratBalasan">Nomor Surat</label>
-                <input type="text" class="form-control" placeholder="Nomor Surat" name="nomorSuratBalasan" id="nomorSuratBalasan">
+                <input type="text" class="form-control" placeholder="Nomor Surat" name="nomorSuratBalasan" id="nomorSuratBalasan" readonly>
             </div>
             <div class="mb-3">
                 <label for="asalSekolah">Asal Sekolah / Universitas</label>
-                <input type="text" class="form-control" placeholder="Kepada Yth." name="asalSekolahPemohon" id="asalSekolahPemohon">
+                <input type="text" class="form-control" placeholder="Kepada Yth." name="asalSekolahPemohon" id="asalSekolahPemohon" readonly>
             </div>
             <div class="mb-3">
                 <label for="tglDibuat">Tanggal Dibuat</label>
@@ -89,7 +89,7 @@
             <!-- Tabel -->
             <div class="mb-3">
                 <label for="jumlahPemohon">Jumlah Pemohon</label>
-                <select class="form-select" aria-label="Default select example" name="jumlahPemohon" id="jumlahPemohon">
+                <select  class="form-select" aria-label="Default select example" name="jumlahPemohon" id="jumlahPemohon">
                     <option selected>Jumlah Pemohon</option>
                     <option value="1">1 Pemohon</option>
                     <option value="2">2 Pemohon</option>
@@ -108,17 +108,22 @@
                 <h4>Pemohon 1</h4>
                 <div class="mb-3 col">
                     <label for="namaPemohon1">Nama Pemohon</label>
-                    <input type="text" class="form-control" id="namaPemohon1" placeholder="Nama Pemohon" name="namaPemohon1">
+                    <select name="namaPemohon1" id="namaPemohon1" class="form-control namaPemohon" onChange="getPemohon('Pemohon1', this.value)">
+                        <option value="-">Nama Lengkap</option>
+                        <?php foreach ($User as $data) { ?>
+                            <option value="<?= $data->id ?>"><?= $data->namaLengkap ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
 
                 <div class="mb-3 col">
                     <label for="nim1">NIM / NRP</label>
-                    <input type="text" class="form-control" placeholder="NIM / NRP" id="nim1" name="nim1">
+                    <input type="text" class="form-control" placeholder="NIM / NRP" id="nim1" name="nim1" readonly>
                 </div>
 
                 <div class="mb-3 col">
                     <label for="jurusan">Jurusan / Kompetensi</label>
-                    <input type="text" class="form-control" placeholder="Jurusan / Kompetensi" id="jurusan1" name="jurusan1">
+                    <input type="text" class="form-control" placeholder="Jurusan / Kompetensi" id="jurusan1" name="jurusan1" readonly>
                 </div>
             </div>
             <!-- Pemohon 1 -->
@@ -128,17 +133,22 @@
                 <h4>Pemohon 2</h4>
                 <div class="mb-3 col">
                     <label for="namaPemohon2">Nama Pemohon</label>
-                    <input type="text" class="form-control" id="namaPemohon2" placeholder="Nama Pemohon" name="namaPemohon2">
+                    <select name="namaPemohon2" id="namaPemohon2" class="form-control namaPemohon" onChange="getPemohon('Pemohon2', this.value)">
+                        <option value="-">Nama Lengkap</option>
+                        <?php foreach ($User as $data) { ?>
+                            <option value="<?= $data->id ?>"><?= $data->namaLengkap ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
 
                 <div class="mb-3 col">
                     <label for="nim1">NIM / NRP</label>
-                    <input type="text" class="form-control" placeholder="NIM / NRP" id="nim2" name="nim2">
+                    <input type="text" class="form-control" placeholder="NIM / NRP" id="nim2" name="nim2" readonly>
                 </div>
 
                 <div class="mb-3 col">
                     <label for="jurusan">Jurusan / Kompetensi</label>
-                    <input type="text" class="form-control" placeholder="Jurusan / Kompetensi" id="jurusan2" name="jurusan2">
+                    <input type="text" class="form-control" placeholder="Jurusan / Kompetensi" id="jurusan2" name="jurusan2" readonly>
                 </div>
             </div>
             <!-- Pemohon 2 -->
@@ -148,17 +158,22 @@
                 <h4>Pemohon 3</h4>
                 <div class="mb-3 col">
                     <label for="namaPemohon3">Nama Pemohon</label>
-                    <input type="text" class="form-control" id="namaPemohon3" placeholder="Nama Pemohon" name="namaPemohon3">
+                    <select name="namaPemohon3" id="namaPemohon3" class="form-control namaPemohon" onChange="getPemohon('Pemohon3', this.value)">
+                        <option value="-">Nama Lengkap</option>
+                        <?php foreach ($User as $data) { ?>
+                            <option value="<?= $data->id ?>"><?= $data->namaLengkap ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
 
                 <div class="mb-3 col">
                     <label for="nim3">NIM / NRP</label>
-                    <input type="text" class="form-control" placeholder="NIM / NRP" id="nim3" name="nim3">
+                    <input type="text" class="form-control" placeholder="NIM / NRP" id="nim3" name="nim3" readonly>
                 </div>
 
                 <div class="mb-3 col">
                     <label for="jurusan">Jurusan / Kompetensi</label>
-                    <input type="text" class="form-control" placeholder="Jurusan / Kompetensi" id="jurusan3" name="jurusan3">
+                    <input type="text" class="form-control" placeholder="Jurusan / Kompetensi" id="jurusan3" name="jurusan3" readonly>
                 </div>
             </div>
             <!-- Pemohon 3 -->
@@ -168,17 +183,22 @@
                 <h4>Pemohon 4</h4>
                 <div class="mb-3 col">
                     <label for="namaPemohon4">Nama Pemohon</label>
-                    <input type="text" class="form-control" id="namaPemohon4" placeholder="Nama Pemohon" name="namaPemohon4">
+                    <select name="namaPemohon4" id="namaPemohon4" class="form-control namaPemohon" onChange="getPemohon('Pemohon4', this.value)">
+                        <option value="-">Nama Lengkap</option>
+                        <?php foreach ($User as $data) { ?>
+                            <option value="<?= $data->id ?>"><?= $data->namaLengkap ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
 
                 <div class="mb-3 col">
                     <label for="nim4">NIM / NRP</label>
-                    <input type="text" class="form-control" placeholder="NIM / NRP" id="nim4" name="nim4">
+                    <input type="text" class="form-control" placeholder="NIM / NRP" id="nim4" name="nim4" readonly>
                 </div>
 
                 <div class="mb-3 col">
                     <label for="jurusan">Jurusan / Kompetensi</label>
-                    <input type="text" class="form-control" placeholder="Jurusan / Kompetensi" id="jurusan4" name="jurusan4">
+                    <input type="text" class="form-control" placeholder="Jurusan / Kompetensi" id="jurusan4" name="jurusan4" readonly>
                 </div>
             </div>
             <!-- Pemohon 4 -->
@@ -188,24 +208,29 @@
                 <h4>Pemohon 5</h4>
                 <div class="mb-3 col">
                     <label for="namaPemohon5">Nama Pemohon</label>
-                    <input type="text" class="form-control" id="namaPemohon5" placeholder="Nama Pemohon" name="namaPemohon5">
+                    <select name="namaPemohon5" id="namaPemohon5" class="form-control namaPemohon" onChange="getPemohon('Pemohon5', this.value)">
+                        <option value="-">Nama Lengkap</option>
+                        <?php foreach ($User as $data) { ?>
+                            <option value="<?= $data->id ?>"><?= $data->namaLengkap ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
 
                 <div class="mb-3 col">
                     <label for="nim5">NIM / NRP</label>
-                    <input type="text" class="form-control" placeholder="NIM / NRP" id="nim5" name="nim5">
+                    <input type="text" class="form-control" placeholder="NIM / NRP" id="nim5" name="nim5" readonly>
                 </div>
 
                 <div class="mb-3 col">
                     <label for="jurusan">Jurusan / Kompetensi</label>
-                    <input type="text" class="form-control" placeholder="Jurusan / Kompetensi" id="jurusan5" name="jurusan5">
+                    <input type="text" class="form-control" placeholder="Jurusan / Kompetensi" id="jurusan5" name="jurusan5" readonly>
                 </div>
             </div>
             <!-- Pemohon 5 -->
                 
                 <div class="mb-3">
                     <label for="statusSurat">Status Surat</label>
-                    <select class="form-select" aria-label="Default select example" id="statusSurat" name="statusSurat">
+                    <select class="form-select" aria-label="Default select example" id="statusSurat" name="statusSurat" onChange="getPemohon('Pemohon1', this.value)">
                         <option selected>Staus Surat</option>
                         <option value="Telah Kami Terima">Telah Kami Terima</option>
                         <option value="Belum Bisa Kami Terima">Belum Bisa Kami Terima</option>
@@ -354,5 +379,42 @@
                 }
               });
         });
+
+        function getPemohon(status, id){
+
+            console.log("Status = ", status, "Id = ", id);
+            
+            if(status == "Pemohon1"){
+                    console.log("Status = ", status, "Id = ", id);
+
+                    var data = {id : id};
+
+                    $.ajax({ 
+                        url: 'Administrator/GetPemohon',
+                        data: data,
+                        method: 'POST',
+                        success: function(response) {        
+                            // console.log(response);
+                            console.log(response);
+                        },
+                        error: function() {
+                        console.log('Terjadi kesalahan saat memuat konten.');
+                        }
+                    });
+            }else if(status == "Pemohon2"){
+                console.log("Status = ", status , "ID = ", id);
+            }else if(status == "Pemohon3"){
+                console.log("Status = ", status , "ID = ", id);
+            }else if(status == "Pemohon4"){
+                console.log("Status = ", status , "ID = ", id);
+            }else if(status == "Pemohon5"){
+                console.log("Status = ", status , "ID = ", id);
+            }
+
+        };
+
+
+        
+
 
     </script>

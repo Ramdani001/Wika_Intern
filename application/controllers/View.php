@@ -379,11 +379,13 @@ class View extends CI_Controller {
         $this->userModels->security();
 
         $query = $this->db->get('divisi')->result();
+        $user = $this->db->get('user')->result();
         $getUser = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data = array(
             'getUser' => $getUser,
-            'divisi' => $query
+            'divisi' => $query,
+            'User' => $user
         );
 
         $this->load->view('templates/pages/SuratBalasan', $data);

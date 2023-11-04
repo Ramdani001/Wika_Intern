@@ -682,6 +682,24 @@ class Administrator extends CI_Controller {
             // }
     }
 
+    public function GetPemohon(){
+        
+        $id = $this->input->post('id');
+
+        // $response = array(
+        //     'userData' => 'Data yang dikirim: ' . $id
+        // );
+
+        $response = array(
+            'status' => 200,
+            'userData' => $this->db->get_where('user', ['id' => $id])->row_array()
+        );
+        
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
+
     public function updateProfile(){
         $idUser = $this->input->post('idUser');
         if(empty($_FILES['gambarProfil']['name'])){
