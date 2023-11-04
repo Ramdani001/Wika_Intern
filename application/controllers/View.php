@@ -37,7 +37,7 @@ class View extends CI_Controller {
         $this->db->order_by('created_at', 'DESC');
         $jobdesc = $this->db->get()->result();
         
-
+ 
         
         $data = [
             'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
@@ -379,8 +379,10 @@ class View extends CI_Controller {
         $this->userModels->security();
 
         $query = $this->db->get('divisi')->result();
+        $getUser = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data = array(
+            'getUser' => $getUser,
             'divisi' => $query
         );
 

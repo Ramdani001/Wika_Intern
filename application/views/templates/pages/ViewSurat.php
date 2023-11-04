@@ -127,7 +127,7 @@
                             & Konstruksi. Selanjutnya Praktik Kerja Lapangan dilaksanakan dengan ketentuan sebagai berikut : 
 
                             </p>
-                            <table class="text-start" style="border-collapse: collapse; text-align: center; width: 65%;" >
+                            <table class="text-start" style="border-collapse: collapse; text-align: center; width: 70%;" >
                                 <tr>
                                     <td>Waktu Pelaksanaan</td>
                                     <td> : </td>

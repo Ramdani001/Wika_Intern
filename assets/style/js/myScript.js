@@ -65,46 +65,10 @@ if(flashData){
         });
     }
 }
-
+ 
     // Single Pages Application (SPA)
     $(document).ready(function() {
-        
-        // 
-            if($('#roleId').attr('value') == 1){
-                var value = 'Dashboard';
-                
-                $.ajax({ 
-                    url: 'View/' + value, 
-                    method: 'POST',
-                    success: function(response) {        
-                        $('#content').html(response);
-                        console.log("Halaman Dashboard");
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.log('Terjadi kesalahan saat memuat konten.');
-                        console.log('Status: ' + textStatus);
-                        console.log('Error: ' + errorThrown);
-                    }
-                });
-
-            }else if($('#roleId').attr('value') == 2){
-
-            }else if($('#roleId').attr('value') == 3){
-                var value = 'JobDesc';
-
-                $.ajax({ 
-                    url: 'View/' + value, 
-                    method: 'POST',
-                    success: function(response) {        
-                        $('#content').html(response);
-                    },
-                    error: function() {
-                    console.log('Terjadi kesalahan saat memuat konten.');
-                    }
-                });
-                
-            }
-        // 
+      
 
         // All Menu
         $('.listMenu').click(function() {

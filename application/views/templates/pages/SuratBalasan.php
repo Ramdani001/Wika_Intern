@@ -8,12 +8,14 @@
         <div class="card-body h-full" style="height: 50vh;">
 
             <div class="row g-5 mt-5 items-center justify-content-evenly ">
-                <div class="col-5 text-center p-3 card shadow"  data-bs-toggle="modal" data-bs-target="#modalSurat" style="width: 300px; height: 150px; cursor: pointer;">
-                    <h4>
-                    Surat Penerimaan
-                    </h4>
-                    <i class="fa-solid fa-file-pen fs-1 mt-3"></i>
-                </div>
+                <?php if($getUser['roleId'] != 3){ ?>
+                    <div class="col-5 text-center p-3 card shadow"  data-bs-toggle="modal" data-bs-target="#modalSurat" style="width: 300px; height: 150px; cursor: pointer;">
+                        <h4>
+                        Surat Penerimaan
+                        </h4>
+                        <i class="fa-solid fa-file-pen fs-1 mt-3"></i>
+                    </div>
+                <?php } ?>
                 
                 <div id="viewSurat" class="col-5 text-center p-3 card shadow" style="width: 300px; height: 150px; cursor: pointer;" value="viewSurat">
                     <h4>
@@ -21,13 +23,14 @@
                     </h4>
                     <i class="fa-solid fa-users-viewfinder  fs-1 mt-3"></i>
                 </div>
-
+                <?php if($getUser['roleId'] != 3){ ?>
                 <div class="col-5 text-center p-3 card shadow" data-bs-toggle="modal" data-bs-target="#modalSertifikat" style="width: 300px; height: 150px; cursor: pointer;">
                     <h4>
                         Sertifikat
                     </h4>
                     <i class="fa-solid fa-certificate fs-1 mt-3"></i>
                 </div>
+                <?php }?>
             </div>
 
         </div>

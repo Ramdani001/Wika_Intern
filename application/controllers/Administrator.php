@@ -330,12 +330,40 @@ class Administrator extends CI_Controller {
 
     public function GetDataSurat(){
         $hasil = $this->ViewSuratModels->getDataSurat();
-   
+        $email = $this->session->userdata('email');
         $data = [];
         $no = 1;
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+       
+        $nimFilter = $user['nim'];
+
+        if($user['roleId'] == 3){
+            foreach ($hasil as $result) {
+                
+                if($nimFilter == $result->nim1 || $nimFilter == $result->nim2 || $nimFilter == $result->nim3 || $nimFilter == $result->nim4 || $nimFilter == $result->nim5){
+                    
+                     $row = array();
+                     $row[] = $no++;
+                     $row[] = $result->nomorSuratBalasan;
+                     $row[] = $result->asalSekolahPemohon;
+                     $row[] = $result->jumlahPemohon;
+                     $row[] = $result->statusSurat;
+                     $row[] = $result->namaDivisi;
+                     $row[] = $result->tglDibuat;
+                     $row[] = " <div class='d-flex'>
+                         <button type='button' class='btn btn-primary m-1' onclick='lihatSurat($result->idSurat, 1)'><i class='fa-solid fa-download'></i></button>
+                         <button type='button' class='btn btn-secondary m-1' onclick='lihatSurat($result->idSurat, 2)'><i class='fa-solid fa-eye'></i></button>
+                              
+                     </div>";
+     
+                     $data[] = $row;
+                }
+             }
+        }
         
-        foreach($hasil as $result){
-            
+        if($user['roleId'] == "1"){
+            foreach ($hasil as $result) {
                 $row = array();
                 $row[] = $no++;
                 $row[] = $result->nomorSuratBalasan;
@@ -345,13 +373,15 @@ class Administrator extends CI_Controller {
                 $row[] = $result->namaDivisi;
                 $row[] = $result->tglDibuat;
                 $row[] = " <div class='d-flex'>
-                            <button type='button' onclick='lihatSurat($result->idSurat, 1)' class='btn btn-primary m-1'><i class='fa-solid fa-download'></i></button>
-                            <button type='button' onclick='lihatSurat($result->idSurat, 2)' class='btn btn-secondary m-1'><i class='fa-solid fa-eye'></i></button>
-                            <button type='button' onclick='lihatSurat($result->idSurat, 3)' class='btn btn-success m-1'><i class='fa-solid fa-pen-to-square'></i></button>
-                        ";
-
+                    <button type='button' class='btn btn-primary m-1' onclick='lihatSurat($result->idSurat, 1)'><i class='fa-solid fa-download'></i></button>
+                    <button type='button' class='btn btn-secondary  m-1' onclick='lihatSurat($result->idSurat, 2)'><i class='fa-solid fa-eye'></i></button>
+                    <button type='button' class='btn btn-success m-1' onclick='lihatSurat($result->idSurat, 3)'><i class='fa-solid fa-pen-to-square'></i></button>
+                    </div>";
+                    
                 $data[] = $row;
+             }
         }
+
 
         $output = array(
             "draw" => $_POST['draw'],
@@ -666,6 +696,37 @@ class Administrator extends CI_Controller {
             $this->db->set($data);
             $this->db->where('id', $idUser);
             $query = $this->db->update('user');
+        }else{
+            $config['upload_path'] = './assets/img/user';
+            $config['allowed_types'] = 'gif|jpg|png|PNG|jpeg';
+            $config['max_size']     = '600000';
+            $config['max_width'] = '10240';
+            $config['max_height'] = '10000';
+
+            $this->load->library('upload', $config);
+
+            
+            if ($this->upload->do_upload('gambarProfil')) {
+                $upload_data = $this->upload->data();
+                $profile = $upload_data['file_name'];
+             
+                $data = array(
+                    'nim' => $this->input->post('nim'),
+                    'namaLengkap' => $this->input->post('namaLengkap'),
+                    'email' => $this->input->post('email'),
+                    'noTelp' => $this->input->post('noTelp'),
+                    'jurusan' => $this->input->post('jurusan'),
+                    'profile' => $profile,
+                );
+                     
+                $this->db->set($data);
+                $this->db->where('id', $idUser);
+                $query = $this->db->update('user');
+
+            } else {
+                $error = $this->upload->display_errors();
+                echo "Gagal mengunggah file: " . $error;
+            }
         }
 
 

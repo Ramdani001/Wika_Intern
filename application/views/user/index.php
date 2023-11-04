@@ -16,5 +16,7 @@
         <div id="content" class="row justify-content-center pt-5">
             <!-- Isi Content Single Page Application -->
         </div>
+
+        <h3>Progres Page</h3>
     </div>
 </div>

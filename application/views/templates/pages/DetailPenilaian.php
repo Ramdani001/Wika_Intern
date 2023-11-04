@@ -56,7 +56,7 @@
             <h1 style="font-family: OldEnglish; text-align: center; margin-top: -30px; font-size: 90px; color: #00022F;">
                 Sertifikat
             </h1>
-            <h3 style="text-align: center; margin-top: -80px; font-size: 30px;  font-weight: bold; text-decoration: underline; color: #00022F;">
+            <h3 style="text-align: center; margin-top: -75px; font-size: 30px;  font-weight: bold; text-decoration: underline; color: #00022F;">
                 PRAKTIK KERJA INDUSTRI
             </h3>
             <h5 style="text-align: center; margin-top: -30px; font-size: 20px;  font-weight: bold; color: #00022F;">

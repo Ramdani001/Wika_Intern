@@ -25,7 +25,7 @@
                 <?= $user['namaLengkap'] ?>
             </span>
             <img class="img-profile rounded-circle"
-                src="<?php base_url(); ?>assets/img/default.png">
+                src="<?php base_url(); ?>assets/img/user/<?= $user['profile'] ?>">
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

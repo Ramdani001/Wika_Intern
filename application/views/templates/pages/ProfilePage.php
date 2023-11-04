@@ -20,10 +20,10 @@
                     <input type="text" class="form-control mb-2" placeholder="Jurusan / Kompetensi" name="jurusan" id="jurusan">
 
                     <label for="">Unit Kerja / Divisi</label>
-                    <input type="text" class="form-control mb-2" placeholder="Penempatan Unit Kerja/Divisi" name="divisi" id="divisi">
+                    <input type="text" class="form-control mb-2" placeholder="Penempatan Unit Kerja/Divisi" name="divisi" id="divisi" readonly>
 
                     <label for="">Status Akun</label>
-                    <input type="text" class="form-control mb-2" placeholder="Status Akun" name="isActive" id="isActive">
+                    <input type="text" class="form-control mb-2" placeholder="Status Akun" name="isActive" id="isActive" readonly>
 
                     <input type="text" class="d-none form-control mb-2" placeholder="Profile" name="old_profile" id="old_profile">
 
@@ -36,11 +36,11 @@
                 </form>
             </div>
         </div>
-    <!-- Edit -->
+    <!-- View -->
     <div class="card mx-auto" style="width: 50%;" id="modalProfile">
         <div class="card-body">
            <div class="d-flex justify-content-center">
-                <img id="gambarProfile" name="gambarProfile" alt="" width="200">
+                <img id="gambarProfile" name="gambarProfile" alt="" width="150" height="150" class="object-fit-cover rounded-circle">
            </div>
            <div class="mt-3">
                     <div class="row gap-2">
@@ -136,7 +136,7 @@
               
               $('#viewisActive').val($statusAkun);
 
-              $('#gambarProfile').attr('src', '<?= base_url(); ?>assets/img/' + response.getProfile.profile);
+              $('#gambarProfile').attr('src', '<?= base_url(); ?>assets/img/user/' + response.getProfile.profile);
 
           },
           error: function() {
