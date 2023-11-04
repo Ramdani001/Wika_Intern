@@ -55,6 +55,22 @@ $(document).ready(function() {
         // Edit = 3
 
         if(status == 1){
+            
+            // var form = document.createElement("form");
+            //     form.method = "POST";
+            //     form.action = "Administrator/DetailPenilaian";
+            //     form.target = "_blank";
+
+            //     var input = document.createElement("input");
+            //     input.type = "hidden";
+            //     input.name = "idSurat";
+            //     input.value = e;
+
+            //     form.appendChild(input);
+
+            //     document.body.appendChild(form);
+
+            //     form.submit();
 
         }else if(status == 2){
 

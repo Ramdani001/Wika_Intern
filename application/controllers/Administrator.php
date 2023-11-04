@@ -714,7 +714,7 @@ class Administrator extends CI_Controller {
 
         $this->output->set_content_type('application/json')->set_output(json_encode($output));
 
-    }
+    } 
 
     public function ControlDivisi(){
         // var_dump($this->input->post());
@@ -787,6 +787,21 @@ class Administrator extends CI_Controller {
 
         }
 
+    }
+
+    public function DetailPenilaian(){
+
+        $idPenilaian = $this->input->get('idPenilaian');
+
+        $this->db->select('penilaian.*, user.nim, user.namaLengkap, user.jurusan, user.asalSekolah');
+        $this->db->from('penilaian');
+        $this->db->join('user', 'user.id = penilaian.idUser', 'left');
+        $this->db->where('penilaian.id_penilaian', $idPenilaian);
+        $query = $this->db->get()->result();
+
+        $data['query'] = $query;
+        
+        $this->load->view('templates/pages/DetailPenilaian', $data);
     }
 
 }

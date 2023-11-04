@@ -58,7 +58,7 @@ class SertifikatController extends CI_Controller {
                 $row[] = $result->asalSekolah;
                 $row[] = $result->tgl_dibuat;
                 $row[] = " <div class='d-flex'>
-                            <button type='button' onclick='lihatSertifikat($result->id_penilaian, 1)' class='btn btn-primary m-1'><i class='fa-solid fa-download'></i></button>
+                            <a target='_blank' href='http://localhost/wika_intern/Administrator/DetailPenilaian?idPenilaian=$result->id_penilaian'><i class='fa-solid fa-download'></i></a>
                             <button type='button' onclick='lihatSertifikat($result->id_penilaian, 2)' class='btn btn-secondary m-1'><i class='fa-solid fa-eye'></i></button>
                             <button type='button' onclick='lihatSertifikat($result->id_penilaian, 3)' class='btn btn-success m-1'><i class='fa-solid fa-pen-to-square'></i></button>
                         ";
@@ -72,7 +72,7 @@ class SertifikatController extends CI_Controller {
             "recordsFiltered" => $this->SertifikatModels->count_filtered_data(),
             "data" => $data,
         );
-
+        // <button type='button' onclick='lihatSertifikat($result->id_penilaian, 1)' class='btn btn-primary m-1'><i class='fa-solid fa-download'></i></button>
         $this->output->set_content_type('application/json')->set_output(json_encode($output));
     }
 
