@@ -34,6 +34,7 @@
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
+                            <div class="text-start collapse-item listMenu" value="Operator">Operator</div>
                             <div class="text-start collapse-item listMenu" value="Intership">Intership</div>
                                 <div class="text-start collapse-item listMenu" value="Penempatan">Penempatan</div>
                             <div class="text-start collapse-item listMenu" value="JobDesc">Job Desc</div>
@@ -82,6 +83,50 @@
                         </li>
             </ul>
         <?php }else if($user['roleId'] == '2') {?>
+            <ul class="nav flex-column">
+
+                <!-- Penugasa Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Penugasan</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <div class="text-start collapse-item listMenu" value="Intership">Intership</div>
+                                <div class="text-start collapse-item listMenu" value="Penempatan">Penempatan</div>
+                            <div class="text-start collapse-item listMenu" value="JobDesc">Job Desc</div>
+                        </div>
+                    </div>
+                </li>
+                        
+                <!-- Monitoring -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#monitoringCollaps"
+                            aria-expanded="true" aria-controls="monitoringCollaps">
+                            <i class="fas fa-fw fa-cog"></i>
+                            <span>Monitoring</span>
+                        </a>
+                        <div id="monitoringCollaps" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                
+                                <div class="text-start collapse-item listMenu" value="Kehadiran">Kehadiran</div>
+                                <div class="text-start collapse-item listMenu" value="Progres">Progres</div>
+                                <div class="text-start collapse-item listMenu" value="Evaluasi">Evaluasi</div>
+                            </div>
+                        </div>
+                    </li>
+
+                <!-- Surat -->    
+                    <li class="nav-item ">
+                        <div class="nav-link SuratBalasan listMenu collapsed" value="SuratBalasan">
+                            <i class="fas fa-fw fa-cog"></i>
+                            <span>Surat</span>
+                        </div>               
+                    </li>
+                    
+            </ul>
         <?php }else if($user['roleId'] == '3') {?>
             <ul class="nav flex-column">
                 <li class="nav-item ">

@@ -28,22 +28,31 @@ class View extends CI_Controller {
     public function JobDesc(){
 
         $this->userModels->security();
+        $get = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-       
-
-        $this->db->select('jobdesc.*, user.namaLengkap');
-        $this->db->from('jobdesc');
-        $this->db->join('user', 'user.id = jobdesc.id_user', 'left');
-        $this->db->order_by('created_at', 'DESC');
-        $jobdesc = $this->db->get()->result();
+        $roleId = $get['divisi'];
         
- 
-        
+        if($roleId == 14){
+            $this->db->select('jobdesc.*, user.namaLengkap');
+            $this->db->from('jobdesc');
+            $this->db->join('user', 'user.id = jobdesc.id_user', 'left');
+            $this->db->order_by('created_at', 'DESC');
+            $jobdesc = $this->db->get()->result();
+        }else{
+            $this->db->select('jobdesc.*, user.namaLengkap, user.divisi');
+            $this->db->from('jobdesc');
+            $this->db->join('user', 'user.id = jobdesc.id_user', 'left');
+            $this->db->where('user.divisi', $roleId); // Menggunakan where untuk menambahkan kondisi
+            $this->db->order_by('jobdesc.created_at', 'DESC'); // Mengganti 'created_at' ke 'jobdesc.created_at'
+            $jobdesc = $this->db->get()->result();
+        }
+      
         $data = [
             'user' => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
             'getUser' => $this->db->get('user')->result(),
             'jobdesc' => $jobdesc,
         ];
+        
         $this->load->view('templates/pages/JobDesc', $data);
     }
 
@@ -108,6 +117,71 @@ class View extends CI_Controller {
         $data['divisi'] = $this->db->get('divisi')->result();
 
         $this->load->view('templates/pages/Intership', $data);
+    }
+
+    public function Operator(){
+        $this->userModels->security();
+
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['divisi'] = $this->db->get('divisi')->result();
+
+        $this->load->view('templates/pages/Operator', $data);
+    }
+
+    public function getOperator(){
+        $this->userModels->security();
+
+        $hasil = $this->serverSideModels->getDataTable();
+        
+        $data = [];
+        $no = $_POST['start'] + 1;
+
+        foreach($hasil as $result){
+            
+            if($result->roleId == 2){
+                $row = array();
+                $row[] = $no++;
+                $row[] = $result->nim;
+                $row[] = $result->namaLengkap;
+                // $row[] = $result->jurusan;
+                $row[] = $result->namaDivisi;
+                $row[] = ($result->isActive != 1) ? "Tidak Aktif" : "Aktif";
+                $row[] = "<button type='button' onclick='modalDetail($result->nim)' class='btn btn-primary'>Edit</button>
+                <button type='button' onclick='hapusOperator($result->nim)' class='btn btn-primary'>Hapus</button>
+                "; 
+
+                $data[] = $row;
+            }        
+        }
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->serverSideModels->count_all_data(),
+            "recordsFiltered" => $this->serverSideModels->count_filtered_data(),
+            "data" => $data,
+        );
+
+        $this->output->set_content_type('application/json')->set_output(json_encode($output));
+
+
+    } 
+
+    public function InsertOperator(){
+        var_dump($this->input->post());
+        die();
+    }
+
+    public function HapusUser(){
+        $this->db->where('nim', $this->input->post('idHapus'));
+        $query = $this->db->delete('user');
+      
+        if($query){
+            $this->session->set_Flashdata('success', 'suratSuccess');
+            redirect('Administrator');
+        }else{
+            $this->session->set_Flashdata('error', 'gagal');
+            redirect('Administrator');
+        }
     }
 
     
